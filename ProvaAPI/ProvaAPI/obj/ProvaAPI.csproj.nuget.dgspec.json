@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\playm\\source\\repos\\ProvaAPI\\ProvaAPI\\ProvaAPI.csproj": {}
+    "C:\\Users\\playm\\Desktop\\Sirius\\CaricoDiLavoro-Sirius\\ProvaAPI\\ProvaAPI\\ProvaAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\playm\\source\\repos\\ProvaAPI\\ProvaAPI\\ProvaAPI.csproj": {
+    "C:\\Users\\playm\\Desktop\\Sirius\\CaricoDiLavoro-Sirius\\ProvaAPI\\ProvaAPI\\ProvaAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\playm\\source\\repos\\ProvaAPI\\ProvaAPI\\ProvaAPI.csproj",
+        "projectUniqueName": "C:\\Users\\playm\\Desktop\\Sirius\\CaricoDiLavoro-Sirius\\ProvaAPI\\ProvaAPI\\ProvaAPI.csproj",
         "projectName": "ProvaAPI",
-        "projectPath": "C:\\Users\\playm\\source\\repos\\ProvaAPI\\ProvaAPI\\ProvaAPI.csproj",
+        "projectPath": "C:\\Users\\playm\\Desktop\\Sirius\\CaricoDiLavoro-Sirius\\ProvaAPI\\ProvaAPI\\ProvaAPI.csproj",
         "packagesPath": "C:\\Users\\playm\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\playm\\source\\repos\\ProvaAPI\\ProvaAPI\\obj\\",
+        "outputPath": "C:\\Users\\playm\\Desktop\\Sirius\\CaricoDiLavoro-Sirius\\ProvaAPI\\ProvaAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\playm\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "5GJsse6Fmgz0icCsPqQUmaw4KPdxM8vKhsrw9YMtNuQzqppkDqSUUUSDr7tVSaZhG9XprUMu8f/c6CWNa5PM9A==",
+  "dgSpecHash": "1f76yTk+zF8D4GvBLi/rv4kAcI2MYI36gQIevQAAifIrX4A8C7LmlVIwjp7j1CEuJ/vos/B2tf6egU1Ak+tuCQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\playm\\source\\repos\\ProvaAPI\\ProvaAPI\\ProvaAPI.csproj",
+  "projectFilePath": "C:\\Users\\playm\\Desktop\\Sirius\\CaricoDiLavoro-Sirius\\ProvaAPI\\ProvaAPI\\ProvaAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\playm\\.nuget\\packages\\automapper\\7.0.1\\automapper.7.0.1.nupkg.sha512",
     "C:\\Users\\playm\\.nuget\\packages\\entityframework\\6.4.4\\entityframework.6.4.4.nupkg.sha512",

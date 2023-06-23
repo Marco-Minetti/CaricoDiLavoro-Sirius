@@ -1,0 +1,12 @@
+C:\Lavori\2020 - Bitbucket\parktester\Sources\LibSirius\bin\Debug\net6.0\LibSirius.deps.json
+C:\Lavori\2020 - Bitbucket\parktester\Sources\LibSirius\bin\Debug\net6.0\LibSirius.dll
+C:\Lavori\2020 - Bitbucket\parktester\Sources\LibSirius\bin\Debug\net6.0\LibSirius.pdb
+C:\Lavori\2020 - Bitbucket\parktester\Sources\LibSirius\obj\Debug\net6.0\LibSirius.csproj.AssemblyReference.cache
+C:\Lavori\2020 - Bitbucket\parktester\Sources\LibSirius\obj\Debug\net6.0\LibSirius.GeneratedMSBuildEditorConfig.editorconfig
+C:\Lavori\2020 - Bitbucket\parktester\Sources\LibSirius\obj\Debug\net6.0\LibSirius.AssemblyInfoInputs.cache
+C:\Lavori\2020 - Bitbucket\parktester\Sources\LibSirius\obj\Debug\net6.0\LibSirius.AssemblyInfo.cs
+C:\Lavori\2020 - Bitbucket\parktester\Sources\LibSirius\obj\Debug\net6.0\LibSirius.csproj.CoreCompileInputs.cache
+C:\Lavori\2020 - Bitbucket\parktester\Sources\LibSirius\obj\Debug\net6.0\LibSirius.dll
+C:\Lavori\2020 - Bitbucket\parktester\Sources\LibSirius\obj\Debug\net6.0\refint\LibSirius.dll
+C:\Lavori\2020 - Bitbucket\parktester\Sources\LibSirius\obj\Debug\net6.0\LibSirius.pdb
+C:\Lavori\2020 - Bitbucket\parktester\Sources\LibSirius\obj\Debug\net6.0\ref\LibSirius.dll

@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "6sYHEO8ObuC1lI0CCt1DiNitoCN2a66gHk1bezkb55g=",
+  "Source": "BeaconAPI",
+  "BasePath": "_content/BeaconAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

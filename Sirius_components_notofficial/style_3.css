@@ -1,0 +1,226 @@
+body {
+    background-color: #eee;
+}
+
+.global {
+    display: grid;
+    grid-template: 10vh 10vh 1fr / 1fr 2fr;
+    width: 90%;
+    height: 80vh;
+    margin: 0 auto;
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.first {
+    padding-top: 2vh;
+    margin-left: 30px;
+    font-size: larger;
+    font-weight: bolder;
+    color: maroon;
+    border-right: 2px solid gray;
+}
+
+.first_ {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    padding-top: 2vh;
+    margin-left: 2vh;
+    color: maroon;
+}
+
+.second {
+    margin-left: 2vh;
+    border-right: 2px solid gray;
+}
+
+.second_ {
+
+}
+
+.third {
+    display: grid;
+    grid-template-rows: repeat(8, 1fr);
+    border-right: 2px solid gray;
+}
+
+.third_ {
+    display: grid;
+    grid-template-columns: repeat(15, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+}
+
+.third_ > div {
+    border-top: 1px solid gray;
+    border-left: 2px dashed gainsboro;
+    display: grid;
+    align-items: center;
+}
+.third > div {
+    padding-top: 0.5vh;
+    padding-left: 3vh;
+    border-top: 1px solid gray;
+}
+
+input
+{
+    width:17vh;
+    color:maroon;
+    background-color: white;
+    border: 3px solid gold;
+    border-radius: 10px;
+}
+
+label.giorni {
+    padding: 5px;
+    color: maroon;
+}
+
+label.responsabili   {
+    padding: 5px;
+    color: maroon;
+}
+
+.project {
+    display: grid;
+    grid-template-columns: repeat(15, 1fr);
+    height: 6vh;
+    margin-top: 3.7vh;
+    text-align: center;
+    align-items: center;
+    border-top: 2px solid maroon;
+    border-bottom: 1px solid gray ;
+    background-color: gold;
+}
+
+.project > div {
+    width: 100%;
+    height: 6vh;
+    color: maroon;
+    border-left: 2px dashed gainsboro;
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    align-self: center;
+    justify-self: center;
+}
+
+.project > div > div {
+    text-align: center;
+    width: 100%;
+}
+
+.title {
+    justify-self: start;
+    font-size: larger;
+    font-weight: bolder;
+    margin-bottom: 2vh;
+}
+
+.sbarra_sinistra {
+    margin-left: auto;
+    width: 50%;
+    height: 0.7vh;
+    border: 1px solid black;
+    border-right: 0px;
+    border-radius: 2vh 0px 0px 2vh;
+}
+
+.sbarra_centro {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: 0.7vh;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.sbarra_destra {
+    margin-right: auto;
+    width: 50%;
+    height: 0.7vh;
+    border: 1px solid black;
+    border-left: 0px;
+    border-radius: 0px 2vh 2vh 0px;
+}
+
+.cont_img {
+    float: left;
+    height: 5vh;
+    width: 5vh;
+    padding: 0.6vh;
+    border: 1px solid maroon;
+    border-radius: 10vh;
+    display: grid;
+    justify-content: center;
+    align-self: start;      
+    margin-right: 10px;
+}
+
+img {
+    height: 5vh;
+    width: 5vh;
+    border-radius: 10vh;
+}
+
+.name {
+    font-weight: bold;
+    color: maroon; /*colore modificato dinamicamente in base al colore del proggetto*/
+}
+
+.information {
+    color: gold;
+}
+
+.viola {
+    background-color: blueviolet;
+}
+
+.verde {
+    background-color: greenyellow;
+}
+
+.rosso {
+    background-color: red;
+}
+
+.all {
+    height: 30vh;
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 10vh;
+    display: grid;
+    grid-template: repeat(9, 1fr) / 1fr 1fr 50vh 1fr 1fr 1fr;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 2vh;
+}
+
+.all > div.cap {
+    background-color: gold;
+}
+
+.all > div {
+    text-align: center;
+    border-bottom: 1px solid maroon;
+    border-right: 1px solid maroon;
+    border-left: 1px solid maroon;
+}
+
+.s {
+    border-radius: 2vh 0vh 0vh 0vh;
+}
+
+.f {
+    border-radius: 0vh 2vh 0vh 0vh;
+}
+
+.sb {
+    border-radius: 0vh 0vh 0vh 2vh;
+}
+
+.fb {
+    border-radius: 0vh 0vh 2vh 0vh;
+}
+

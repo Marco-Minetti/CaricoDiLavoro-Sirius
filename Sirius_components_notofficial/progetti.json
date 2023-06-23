@@ -1,0 +1,26 @@
+[
+  {
+    "ID": 2,
+    "Responsabile": "Jane Smith",
+    "Titolo": "Project B",
+    "StartDate": "2023-06-20",
+    "EndDate": "2023-07-05",
+    "WorkEffort": 30
+  },
+  {
+    "ID": 1,
+    "Responsabile": "John Doe",
+    "Titolo": "Project A",
+    "StartDate": "2023-06-15",
+    "EndDate": "2023-06-30",
+    "WorkEffort": 40
+  },
+  {
+    "ID": 3,
+    "Responsabile": "Mike Johnson",
+    "Titolo": "Project C",
+    "StartDate": "2023-06-25",
+    "EndDate": "2023-07-10",
+    "WorkEffort": 35
+  }
+]

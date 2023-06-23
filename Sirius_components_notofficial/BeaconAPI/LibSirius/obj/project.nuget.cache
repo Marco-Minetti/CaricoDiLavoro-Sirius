@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "2qJVt8099Udc30FOskwrvxGLqNe3SVtarexVoDOJ3pbLlyUx+jm+j62POtA5OQGYs7rK+IVWjnMj1NRfd8UuvQ==",
+  "success": true,
+  "projectFilePath": "C:\\Lavori\\2022-Azure\\BeaconAPI\\BeaconAPI\\LibSirius\\LibSirius.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\fabio\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\6.0.0\\microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",
+    "C:\\Users\\fabio\\.nuget\\packages\\ssh.net\\2020.0.2\\ssh.net.2020.0.2.nupkg.sha512",
+    "C:\\Users\\fabio\\.nuget\\packages\\sshnet.security.cryptography\\1.3.0\\sshnet.security.cryptography.1.3.0.nupkg.sha512",
+    "C:\\Users\\fabio\\.nuget\\packages\\system.linq.async\\6.0.1\\system.linq.async.6.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}

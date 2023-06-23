@@ -1,0 +1,10 @@
+$data = [
+    [id=>1, Responsabile=>"Billy Bob", Titolo=>"A", StartDate=>"14/05/1982", EndDate=>"20/05/1982", WorkEffort=>"3"],
+    [id=>2, Responsabile=>"Mary May", Titolo=>"B", StartDate=>"14/06/1982", EndDate=>"14/07/1982", WorkEffort=>"4"],
+    [id=>3, Responsabile=>"Christine Lobowski", Titolo=>"C", StartDate=>"14/05/1992", EndDate=>"14/05/1993", WorkEffort=>"1"],
+    [id=>4, Responsabile=>"Brendon Philips", Titolo=>"D", StartDate=>"14/05/2022", EndDate=>"14/05/2023", WorkEffort=>"2"],
+    [id=>5, Responsabile=>"Margret Marmajuke", Titolo=>"E", StartDate=>"30/05/1982", EndDate=>"1/07/1982", WorkEffort=>"5"],
+];
+
+//return JSON formatted data
+echo(json_encode($data));

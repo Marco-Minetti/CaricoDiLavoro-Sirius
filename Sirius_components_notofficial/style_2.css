@@ -1,0 +1,138 @@
+body {
+    background-color: #eee;
+}
+
+.global {
+    display: grid;
+    grid-template: 20vh 20vh 1fr / 1fr 1fr;
+    width: 90%;
+    height: 80vh;
+    margin: 0 auto;
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.first {
+    margin-left: 30px;
+    font-size: larger;
+    font-weight: bolder;
+    color: maroon;
+}
+
+.second {
+    margin-left: 30px;
+}
+
+.third_left > div {
+    padding-top: 1vh;
+    padding-left: 3vh;
+    border-top: 2px solid gray;
+}
+
+.third_right > div {
+    border-top: 2px solid gray;
+    border-right: 2px dashed gainsboro;
+    display: grid;
+    align-items: center;
+}
+
+.cont_img {
+    float: left;
+    height: 2vh;
+    width: 2vh;
+    padding: 0.2vh;
+    border: 1px solid maroon;
+    border-radius: 10vh;
+    display: grid;
+    justify-content: center;
+    align-self: start;      
+    margin-right: 10px;
+}
+
+img {
+    height: 2vh;
+    width: 2vh;
+    border-radius: 10vh;
+}
+
+input
+{
+    width:15vh;
+    color:maroon;
+    background-color: white;
+    border: 3px solid gold;
+    border-radius: 10px;
+}
+
+label {
+    padding: 5px;
+    color: maroon;
+}
+
+.sbarra_sinistra {
+    margin-left: auto;
+    width: 50%;
+    height: 0.7vh;
+    border: 1px solid black;
+    border-right: 0px;
+    border-radius: 2vh 0px 0px 2vh;
+}
+
+.sbarra_centro {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: 0.7vh;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.sbarra_destra {
+    margin-right: auto;
+    width: 50%;
+    height: 0.7vh;
+    border: 1px solid black;
+    border-left: 0px;
+    border-radius: 0px 2vh 2vh 0px;
+}
+
+.project {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    text-align: center;
+    align-items: center;
+    border-top: 2px solid gray;
+    background-color: gold;
+}
+
+.project > div {
+    width: 50%;
+    height: 2.5vh;
+    color: maroon;
+    align-self: center;
+    justify-self: center;
+    border: 1px solid maroon;
+    border-radius: 3vh;
+}
+
+.name {
+    font-weight: bold;
+    color: maroon; /*colore modificato dinamicamente in base al colore del proggetto*/
+}
+
+.information {
+    color: gold;
+}
+
+.viola {
+    background-color: blueviolet;
+}
+
+.verde {
+    background-color: greenyellow;
+}
+
+.rosso {
+    background-color: red;
+}

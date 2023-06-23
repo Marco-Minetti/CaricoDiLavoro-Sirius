@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Table</title>
+  <script src="jquery3.7.js"></script>
+  <link rel="stylesheet" href="style_t.css">
+</head>
+<body>
+  <table id="projectTable">
+    <thead>
+      <tr>
+        <th onclick="ordinaDati('ID')">ID</th>
+        <th onclick="ordinaDati('Responsabile')">Responsabile</th>
+        <th onclick="ordinaDati('Titolo')">Titolo</th>
+        <th onclick="ordinaDati('StartDate')">StartDate</th>
+        <th onclick="ordinaDati('EndDate')">EndDate</th>
+        <th onclick="ordinaDati('WorkEffort')">WorkEffort</th>
+      </tr>
+    </thead>
+    <tbody id="tableBody"></tbody>
+  </table>
+  <script src="scripts_t.js"></script>
+</body>
+
+</html>

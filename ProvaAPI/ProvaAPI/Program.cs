@@ -61,8 +61,8 @@ namespace ProvaAPI
                         case 0: if (value != null) { coso.Fields.priority = value; }; break;
                         case 2: if (value != null) { coso.Fields.state = value; }; break;
                         case 3: if (value != null) { coso.Fields.assignee = value; }; break;
-                        case 6: if (value != null) { coso.Fields.dueDate = long.Parse(value); }; break;
-                        case 7: if (value != null) { coso.Fields.startDate = long.Parse(value); }; break;
+                        case 6: if (value != null) { coso.Fields.dueDate = giveHour(long.Parse(value)); }; break;
+                        case 7: if (value != null) { coso.Fields.startDate = giveHour(long.Parse(value)); }; break;
                         //il problema è che salva i minuti in 300 modi diversi, credo. Quindi dovrei gestire più casi e più variabili
                         case 8:
                             try
@@ -85,7 +85,6 @@ namespace ProvaAPI
             {
                 if(item.Fields.workEffort > 0) { VeraLista.Add(item); }
             }
-            visualizza();
 
             /*================output totale tombale======================*/
             string jsonString = JsonConvert.SerializeObject(VeraLista);
@@ -107,30 +106,14 @@ namespace ProvaAPI
 
                 return valueToken.ToString();
             }
-
-            void visualizza()
-            {
-                for (int i = 0; i < VeraLista.Count; i++)
-                {
-                    Console.WriteLine("ID: " + VeraLista[i].idReadable);
-                    Console.WriteLine("Summary: " + VeraLista[i].summary);
-                    Console.WriteLine("Start date: " + giveHour(VeraLista[i].Fields.startDate));
-                    Console.WriteLine("End Date: " + giveHour(VeraLista[i].Fields.dueDate));
-                    Console.WriteLine("Team: " + VeraLista[i].Fields.team);
-                    Console.WriteLine("Asssignee: " + VeraLista[i].Fields.assignee);
-                    Console.WriteLine("Priority: " + VeraLista[i].Fields.priority);
-                    Console.WriteLine("State: " + VeraLista[i].Fields.state);
-                    Console.WriteLine("Minutes: " + VeraLista[i].Fields.workEffort);
-                    Console.WriteLine("===================");
-                }
-            }
-
             DateTime giveHour(long a)
             {
                 DateTime dateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
                 dateTime = dateTime.AddMilliseconds(a).ToLocalTime();
                 return dateTime;
             }
+
+            
 
 
             /*================API in uscita============================*/

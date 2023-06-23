@@ -14,8 +14,8 @@ namespace ProvaAPI.Classi
         public string priority { get; set; }
         public string assignee { get; set; }
         public string team { get; set; }
-        public long dueDate { get; set; }
-        public long startDate { get; set; }
+        public DateTime dueDate { get; set; }
+        public DateTime startDate { get; set; }
         public string state { get; set; }
         public int workEffort { get; set; }
     }

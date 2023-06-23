@@ -1,27 +1,42 @@
+let dati;
 $(document).ready(async function () {
-  data = await leggiticket();
+  dati = await leggiticket();
   aggiornaTabella();
 });
 
-let data;
+
 
 function aggiornaTabella() {
   
     
 
-  var table = new Tabulator("#projectTable", {
+  /*var table = new Tabulator("#projectTable", {
     height:"311px",
     columns:[
-    {title:"ID", field:"ID"},
-    {title:"Responsabile", field:"Responsabile"},
-    {title:"Titolo", field:"Titolo"},
-    {title:"StartDate", field:"StartDate"},
-    {title:"EndDate", field:"EndDate"},
-    {title:"WorkEffort", field:"WorkEffort"},
+    {title:"ID", field:"idReadable"},
+    {title:"Responsabile", field:"fields.assignee"},
+    {title:"Titolo", field:"summary"},
+    {title:"StartDate", field:"fields.startDate"},
+    {title:"EndDate", field:"fields.endDate"},
+    {title:"WorkEffort", field:"fields.workEffort"},
     ],
   });
+   table.setData(data)*/
 
-  table.getPage(data);
+
+ 
+  var table = new Tabulator("#projectTable", {
+    data:dati,
+    height:"311px",
+    columns:[
+    {title:"ID", field:"idReadable"},
+    {title:"Responsabile", field:"fields.assignee"},
+    {title:"Titolo", field:"summary"},
+    {title:"StartDate", field:"fields.startDate"},
+    {title:"EndDate", field:"fields.dueDate"},
+    {title:"WorkEffort", field:"fields.workEffort"},
+    ],
+});
   
   /*
   j = 0;
@@ -63,7 +78,7 @@ function aggiornaTabella() {
 }
 
 async function leggiticket() {
-  let file = 'http://127.0.0.1:5500/progetti.json';
+  let file = 'https://localhost:7075/Dati';
   const response = await fetch(file);
   data = await response.json();
 

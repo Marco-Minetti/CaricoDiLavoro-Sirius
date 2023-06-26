@@ -35,7 +35,11 @@ namespace ProvaAPI
             /*==============Parsing del JSON dentro ad una lista===============*/
             List<IssueSemplice> Lista = new List<IssueSemplice>();
             IssueSemplice coso;
-            JArray jsonArray = JArray.Parse(json);
+            JArray jsonArray;
+            try
+            {
+                jsonArray = JArray.Parse(json);
+            }catch(Exception ex) { Console.WriteLine($"Si è verificato un errore, possibilmente questa API non c'entra ({ex})"); return; }
 
             foreach (JToken issueToken in jsonArray)
             {

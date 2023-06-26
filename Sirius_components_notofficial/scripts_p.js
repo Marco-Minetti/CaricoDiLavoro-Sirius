@@ -78,9 +78,17 @@ function aggiornaTabella() {
 }
 
 async function leggiticket() {
+<<<<<<< HEAD
   let file = 'https://localhost:7075/Dati';
   const response = await fetch(file);
   data = await response.json();
+=======
+    let file = 'https://localhost:7075/Dati';
+    const response = await fetch(file);
+    data = await response.json();
+  
+  
+>>>>>>> 1d34d1f01737f18af3475d4131a350d946044370
 
   return data;
 }

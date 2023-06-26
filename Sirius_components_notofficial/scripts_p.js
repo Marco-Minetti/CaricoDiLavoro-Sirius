@@ -78,9 +78,15 @@ function aggiornaTabella() {
 }
 
 async function leggiticket() {
-  let file = 'https://localhost:7075/Dati';
-  const response = await fetch(file);
-  data = await response.json();
+  try{
+    let file = 'https://localhost:7075/Dati';
+    const response = await fetch(file);
+    data = await response.json();
+  }catch{
+    // solo debug
+    data = 'CaricoDiLavoro-Sirius\project_sirius\progetti.json';
+  }
+  
 
   return data;
 }

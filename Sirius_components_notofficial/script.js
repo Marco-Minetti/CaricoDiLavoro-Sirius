@@ -9,15 +9,6 @@ class Person {
         this.team = group
     }
 }
-class PersonaTab {
-    constructor(nome, team) {
-        this.nome = nome
-        this.team = team
-    }
-    aggiungi(item){
-        this.coso.push(item)
-    }
-}
 class Pezzi {
     constructor(id, prio, dueDate, endDate, workEffort, state) {
         this.id = id
@@ -39,6 +30,7 @@ $(document).ready(async function () {
     mostraOrarioPreciso();
     Calcolini()
     CreaPersone()
+    inserisciTab()
 });
 
 function mostraOrarioPreciso() {
@@ -109,18 +101,28 @@ function Calcolini() {
     )
 }
 function CreaPersone() {
-    // ho paura di doverlo fare globale
-    coso = []
     for (i = 0; i < personeUniche.length; i++) {
         for (j = 0; j < persone.length; j++) {
             if (persone[j] == personeUniche[i]) {
-                
+
+                coso = []
+                pezzo = []
                 coso.push(new Pezzi(data[j].idReadable, data[j].fields.priority, data[j].fields.dueDate, data[j].fields.startDate, data[j].fields.workEffort, data[j].fields.state))
-                listaTab1.push(persone[j].nome, persone[j].team, coso)
+                pezzo.push(persone[j].nome, persone[j].team, coso)
+                listaTab1.push(pezzo)
             }
         }
     }
 }
 
+/*==================Crea Tabella========================= */
+function inserisciTab(){
+    /*'<div><div class="data"><div class="name"></div><div class="information"></div></div></div>'*/
+    tab = document.getElementById("sinistro").innerHTML
+    tab = ""
+    for(i = 0; i<listaTab1.length; i++){
+        tab += '<div><div class="data"><div class="name">'+ listaTab1[i].nome + '</div><div class="information">' + listaTab1[i].team +'</div></div></div>'
+    }
+}
 
 

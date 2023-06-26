@@ -24,7 +24,7 @@
                     <label id="giorni" for="day">Giorni: </label>
                     <input list="days" name="day" id="day" placeholder="Scegli una misura">
                     <datalist id="days">
-                        <option value="7 giorni" onclick="SetDay(7)">
+                        <option value="7 giorni" onselect="SetDay(7)">
                         <option value="15 giorni" onclick="SetDay(15)">
                         <option value="30 giorni" onclick="SetDay(30)">
                         <option value="60 giorni" onclick="SetDay(60)"></option>
@@ -50,7 +50,7 @@
         <div class="second_">
             <div class="project">
                 <div id="start_number">
-
+                    <div></div>
                 </div>
         </div>
         <div class="third" id="sinistro">
@@ -62,6 +62,7 @@
             </div>
         </div>
         <div class="third_">
+            <div></div>
         </div>
     </div>
     <div id="projectTable"></div>

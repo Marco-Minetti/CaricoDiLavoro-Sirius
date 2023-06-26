@@ -31,6 +31,7 @@ $(document).ready(async function () {
     Calcolini()
     CreaPersone()
     inserisciTab()
+    //SetDay(7)
 });
 
 function mostraOrarioPreciso() {
@@ -101,38 +102,30 @@ function Calcolini() {
     )
 }
 function CreaPersone() {
-    for (i = 0; i < persone.length; i++) {
+    for (i = 0; i < personeUniche.length; i++) {
+        pezzo = []
         coso = []
-        for (j = 0; j < personeUniche.length; j++) {
-            if (persone[i] == personeUniche[j]) {
-                pezzo = []
-                coso.push(new Pezzi(data[i].idReadable, data[i].fields.priority, data[i].fields.dueDate, data[i].fields.startDate, data[i].fields.workEffort, data[i].fields.state))
-                pezzo.push(persone[i].nome, persone[i].team, coso)
-                listaTab1.push(pezzo)
-            }
-        }
-    }
-    /*for (i = 0; i < personeUniche.length; i++) {
+        let nome
+        let team
         for (j = 0; j < persone.length; j++) {
-            if (persone[j] == personeUniche[i]) {
-                coso = []
-                pezzo = []
+            if (persone[j].nome == personeUniche[i].nome && persone[j].team == personeUniche[i].team) {
                 coso.push(new Pezzi(data[j].idReadable, data[j].fields.priority, data[j].fields.dueDate, data[j].fields.startDate, data[j].fields.workEffort, data[j].fields.state))
-                pezzo.push(persone[j].nome, persone[j].team, coso)
-                listaTab1.push(pezzo)
+                nome = persone[j].nome
+                team = persone[j].team
             }
         }
-    }*/
-    console.log(listaTab1)
+        pezzo.push(nome, team, coso)
+        listaTab1.push(pezzo)
+    }
 }
 
 /*==================Crea Tabella========================= */
-function inserisciTab(){
+function inserisciTab() {
     /*'<div><div class="data"><div class="name"></div><div class="information"></div></div></div>'*/
     tab = document.getElementById("sinistro").innerHTML = ""
     let string = ""
-    for(i = 0; i<listaTab1.length; i++){
-        string += '<div><div class="data"><div class="name">'+ listaTab1[i][0] + '</div><div class="information">' + listaTab1[i][1] +'</div></div></div>'
+    for (i = 0; i < listaTab1.length; i++) {
+        string += '<div><div class="data"><div class="name">' + listaTab1[i][0] + '</div><div class="information">' + listaTab1[i][1] + '</div></div></div>'
     }
     document.getElementById("sinistro").innerHTML = string
 }
@@ -145,7 +138,7 @@ function SetDay(giorni) {
 function inseriscidiv(giorni) {
     document.getElementById("third_").innerHTML = "";
     let string = "";
-    for(i = 0; i<listaTab1.length * giorni; i++){
+    for (i = 0; i < listaTab1.length * giorni; i++) {
         string += '<div></div>';
     }
     document.getElementById("third_").innerHTML = string
@@ -154,8 +147,8 @@ function inseriscidiv(giorni) {
 function inseriscigiorni(giorni) {
     document.getElementById("start_number").innerHTML = "";
     let string = "";
-    for(i = 0; i<giorni; i++){
-        string += '<div><div>'+ i + '</div></div>'
+    for (i = 0; i < giorni; i++) {
+        string += '<div><div>' + i + '</div></div>'
     }
     document.getElementById("sinistro").innerHTML = string;
 }

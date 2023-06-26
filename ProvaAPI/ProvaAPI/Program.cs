@@ -154,7 +154,7 @@ namespace ProvaAPI
             })
             .WithName("ProvaAPI")
             .WithOpenApi();
-            app.Run(); // C'è un problema
+            app.Run(); 
         }
     }
 }

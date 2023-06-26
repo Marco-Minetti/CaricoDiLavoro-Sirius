@@ -24,10 +24,10 @@
                     <label id="giorni" for="day">Giorni: </label>
                     <input list="days" name="day" id="day" placeholder="Scegli una misura">
                     <datalist id="days">
-                        <option value="7 giorni">
-                        <option value="15 giorni">
-                        <option value="30 giorni">
-                        <option value="60 giorni"></option>
+                        <option value="7 giorni" onclick="SetDay(7)">
+                        <option value="15 giorni" onclick="SetDay(15)">
+                        <option value="30 giorni" onclick="SetDay(30)">
+                        <option value="60 giorni" onclick="SetDay(60)"></option>
                     </datalist>
                 </form>
             </div>
@@ -49,38 +49,9 @@
         </div>
         <div class="second_">
             <div class="project">
-                <div>
-                    <div>1</div>
-                </div><div>
-                    <div>2</div>
-                </div><div>
-                    <div>3</div>
-                </div><div>
-                    <div>4</div>
-                </div><div>
-                    <div>5</div>
-                </div><div>
-                    <div>6</div>
-                </div><div>
-                    <div>7</div>
-                </div><div>
-                    <div>8</div>
-                </div><div>
-                    <div>9</div>
-                </div><div>
-                    <div>10</div>
-                </div><div>
-                    <div>11</div>
-                </div><div>
-                    <div>12</div>
-                </div><div>
-                    <div>13</div>
-                </div><div>
-                    <div>14</div>
-                </div><div>
-                    <div>15</div>
+                <div id="start_number">
+
                 </div>
-            </div>
         </div>
         <div class="third" id="sinistro">
             <div>
@@ -91,7 +62,6 @@
             </div>
         </div>
         <div class="third_">
-            <div></div>
         </div>
     </div>
     <div id="projectTable"></div>

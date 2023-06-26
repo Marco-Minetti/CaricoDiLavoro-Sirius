@@ -26,12 +26,12 @@ class Pezzi {
 
 $(document).ready(async function () {
     dati = await leggiticket();
-    aggiornaTabella();
     mostraOrarioPreciso();
     Calcolini()
     CreaPersone()
     inserisciTab()
-    SetDay(7)
+    SetDay(7)       
+    aggiornaTabella()
 });
 
 function mostraOrarioPreciso() {
@@ -136,21 +136,21 @@ function SetDay(giorni) {
 }
 
 function inseriscidiv(giorni) {
-    document.getElementsByClassName("third_").innerHTML = ""
+    document.getElementsByClassName("third_")[0].innerHTML = ""
     let string = "";
     for (i = 0; i < listaTab1.length * giorni; i++) {
-        string += '<div></div>';
+        string += '<div></div>'
     }
-    document.getElementsByClassName("third_").innerHTML = string
+    document.getElementsByClassName("third_")[0].innerHTML = string
 }
 
 function inseriscigiorni(giorni) {
-    document.getElementById("start_number").innerHTML = "";
+    document.getElementsByClassName("start_number")[0].innerHTML = "";
     let string = "";
     for (i = 1; i <= giorni; i++) {
-        string += '<div><div>' + i + '</div></div>'
+        string += '<div>' + i + '</div>'
     }
-    document.getElementById("start_number").innerHTML = string;
+    document.getElementsByClassName("start_number")[0].innerHTML = string
 }
 
 

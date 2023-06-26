@@ -101,10 +101,20 @@ function Calcolini() {
     )
 }
 function CreaPersone() {
-    for (i = 0; i < personeUniche.length; i++) {
+    for (i = 0; i < persone.length; i++) {
+        coso = []
+        for (j = 0; j < personeUniche.length; j++) {
+            if (persone[i] == personeUniche[j]) {
+                pezzo = []
+                coso.push(new Pezzi(data[i].idReadable, data[i].fields.priority, data[i].fields.dueDate, data[i].fields.startDate, data[i].fields.workEffort, data[i].fields.state))
+                pezzo.push(persone[i].nome, persone[i].team, coso)
+                listaTab1.push(pezzo)
+            }
+        }
+    }
+    /*for (i = 0; i < personeUniche.length; i++) {
         for (j = 0; j < persone.length; j++) {
             if (persone[j] == personeUniche[i]) {
-
                 coso = []
                 pezzo = []
                 coso.push(new Pezzi(data[j].idReadable, data[j].fields.priority, data[j].fields.dueDate, data[j].fields.startDate, data[j].fields.workEffort, data[j].fields.state))
@@ -112,16 +122,24 @@ function CreaPersone() {
                 listaTab1.push(pezzo)
             }
         }
-    }
+    }*/
+    console.log(listaTab1)
 }
 
 /*==================Crea Tabella========================= */
 function inserisciTab(){
     /*'<div><div class="data"><div class="name"></div><div class="information"></div></div></div>'*/
-    tab = document.getElementById("sinistro").innerHTML
-    tab = ""
+    tab = document.getElementById("sinistro").innerHTML = ""
+    let string = ""
     for(i = 0; i<listaTab1.length; i++){
-        tab += '<div><div class="data"><div class="name">'+ listaTab1[i].nome + '</div><div class="information">' + listaTab1[i].team +'</div></div></div>'
+        string += '<div><div class="data"><div class="name">'+ listaTab1[i][0] + '</div><div class="information">' + listaTab1[i][1] +'</div></div></div>'
+    }
+    document.getElementById("sinistro").innerHTML = string
+}
+
+function inseriscidiv() {
+    for(i = 0; i<persone.length * ; i++){
+        string += '<div></div>';
     }
 }
 

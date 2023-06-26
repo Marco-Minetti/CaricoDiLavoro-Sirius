@@ -31,7 +31,7 @@ $(document).ready(async function () {
     Calcolini()
     CreaPersone()
     inserisciTab()
-    //SetDay(7)
+    SetDay(7)
 });
 
 function mostraOrarioPreciso() {
@@ -136,21 +136,21 @@ function SetDay(giorni) {
 }
 
 function inseriscidiv(giorni) {
-    document.getElementById("third_").innerHTML = "";
+    document.getElementsByClassName("third_").innerHTML = ""
     let string = "";
     for (i = 0; i < listaTab1.length * giorni; i++) {
         string += '<div></div>';
     }
-    document.getElementById("third_").innerHTML = string
+    document.getElementsByClassName("third_").innerHTML = string
 }
 
 function inseriscigiorni(giorni) {
     document.getElementById("start_number").innerHTML = "";
     let string = "";
-    for (i = 0; i < giorni; i++) {
+    for (i = 1; i <= giorni; i++) {
         string += '<div><div>' + i + '</div></div>'
     }
-    document.getElementById("sinistro").innerHTML = string;
+    document.getElementById("start_number").innerHTML = string;
 }
 
 

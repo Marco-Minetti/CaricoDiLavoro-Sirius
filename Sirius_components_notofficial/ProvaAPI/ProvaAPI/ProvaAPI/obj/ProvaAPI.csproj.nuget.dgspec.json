@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\dfj24\\OneDrive\\Desktop\\Sirius\\ProvaAPI\\ProvaAPI\\ProvaAPI\\ProvaAPI.csproj": {}
+    "C:\\Users\\dfj24\\OneDrive\\Desktop\\CaricoDiLavoro-Sirius\\Sirius_components_notofficial\\ProvaAPI\\ProvaAPI\\ProvaAPI\\ProvaAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\dfj24\\OneDrive\\Desktop\\Sirius\\ProvaAPI\\ProvaAPI\\ProvaAPI\\ProvaAPI.csproj": {
+    "C:\\Users\\dfj24\\OneDrive\\Desktop\\CaricoDiLavoro-Sirius\\Sirius_components_notofficial\\ProvaAPI\\ProvaAPI\\ProvaAPI\\ProvaAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\dfj24\\OneDrive\\Desktop\\Sirius\\ProvaAPI\\ProvaAPI\\ProvaAPI\\ProvaAPI.csproj",
+        "projectUniqueName": "C:\\Users\\dfj24\\OneDrive\\Desktop\\CaricoDiLavoro-Sirius\\Sirius_components_notofficial\\ProvaAPI\\ProvaAPI\\ProvaAPI\\ProvaAPI.csproj",
         "projectName": "ProvaAPI",
-        "projectPath": "C:\\Users\\dfj24\\OneDrive\\Desktop\\Sirius\\ProvaAPI\\ProvaAPI\\ProvaAPI\\ProvaAPI.csproj",
+        "projectPath": "C:\\Users\\dfj24\\OneDrive\\Desktop\\CaricoDiLavoro-Sirius\\Sirius_components_notofficial\\ProvaAPI\\ProvaAPI\\ProvaAPI\\ProvaAPI.csproj",
         "packagesPath": "C:\\Users\\dfj24\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\dfj24\\OneDrive\\Desktop\\Sirius\\ProvaAPI\\ProvaAPI\\ProvaAPI\\obj\\",
+        "outputPath": "C:\\Users\\dfj24\\OneDrive\\Desktop\\CaricoDiLavoro-Sirius\\Sirius_components_notofficial\\ProvaAPI\\ProvaAPI\\ProvaAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\dfj24\\AppData\\Roaming\\NuGet\\NuGet.Config",

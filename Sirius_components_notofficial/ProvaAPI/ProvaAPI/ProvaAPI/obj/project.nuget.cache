@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "AkpVdFHoRFfgOpuluGSd1S9Z9nXN2EkdalsY450aP6aN13bpucH5iF7wSJU8LNZbTjQa8htQzaDFJ1BdJ+Kp4g==",
+  "dgSpecHash": "dCY5k99P5qpqq9+85QvJ2qezj8JPepm3s9w4dzcdkPcjPEQ5MnvKAJtthFxEr60Fv4iFQ6Qt2sBp3bIhnTt7aQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\dfj24\\OneDrive\\Desktop\\Sirius\\ProvaAPI\\ProvaAPI\\ProvaAPI\\ProvaAPI.csproj",
+  "projectFilePath": "C:\\Users\\dfj24\\OneDrive\\Desktop\\CaricoDiLavoro-Sirius\\Sirius_components_notofficial\\ProvaAPI\\ProvaAPI\\ProvaAPI\\ProvaAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\dfj24\\.nuget\\packages\\automapper\\7.0.1\\automapper.7.0.1.nupkg.sha512",
     "C:\\Users\\dfj24\\.nuget\\packages\\microsoft.aspnetcore.antiforgery\\2.1.0\\microsoft.aspnetcore.antiforgery.2.1.0.nupkg.sha512",

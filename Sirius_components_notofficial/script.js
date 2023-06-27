@@ -27,11 +27,11 @@ class Pezzi {
 $(document).ready(async function () {
     dati = await leggiticket();
     mostraOrarioPreciso();
-    Calcolini()
-    CreaPersone()
-    inserisciTab()
-    SetDay(7)       
-    aggiornaTabella()
+    Calcolini();
+    CreaPersone();
+    inserisciTab();
+    SetDay(7); 
+    aggiornaTabella();
 });
 
 function mostraOrarioPreciso() {
@@ -145,12 +145,12 @@ function inseriscidiv(giorni) {
 }
 
 function inseriscigiorni(giorni) {
-    document.getElementsByClassName("start_number")[0].innerHTML = "";
+    document.getElementsByClassName("project")[0].innerHTML = "";
     let string = "";
     for (i = 1; i <= giorni; i++) {
-        string += '<div>' + i + '</div>'
+        string += '<div><div>' + i + '</div></div>'
     }
-    document.getElementsByClassName("start_number")[0].innerHTML = string
+    document.getElementsByClassName("project")[0].innerHTML = string
 }
 
 

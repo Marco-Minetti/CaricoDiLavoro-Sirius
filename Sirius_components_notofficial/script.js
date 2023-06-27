@@ -30,7 +30,6 @@ $(document).ready(async function () {
     Calcolini();
     CreaPersone();
     inserisciTab();
-    SetDay(7); 
     aggiornaTabella();
 });
 
@@ -131,7 +130,7 @@ function inserisciTab() {
 }
 
 function SetDay(giorni) {
-    const temp = document.getElementsByClassName('grid')[0];
+    const temp = document.querySelector('.grid');
     temp.style.gridTemplateColumns = "repeat(" + giorni + ", 1fr);"
     inseriscidiv(giorni);
     inseriscigiorni(giorni);
@@ -154,7 +153,11 @@ function inseriscigiorni(giorni) {
     }
     document.getElementsByClassName("project")[0].innerHTML = string
 }
-
-
-
+function handleSelection(){
+    var giorni = document.getElementById("days").value;
+    const temp = document.querySelector('.grid');
+    temp.style.gridTemplateColumns = "repeat(" + giorni + ", 1fr);"
+    inseriscidiv(giorni);
+    inseriscigiorni(giorni);
+}
 

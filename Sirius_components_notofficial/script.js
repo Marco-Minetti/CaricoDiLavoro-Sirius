@@ -117,7 +117,9 @@ function CreaPersone() {
         pezzo.push(nome, team, coso)
         listaTab1.push(pezzo)
     }
-    console.log(listaTab1)
+}
+function setupOre(){
+    
 }
 
 /*==================Crea Tabella========================= */

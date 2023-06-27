@@ -20,18 +20,14 @@ class Pezzi {
     }
 }
 
-
-
-
-
 $(document).ready(async function () {
     dati = await leggiticket();
     mostraOrarioPreciso();
     Calcolini();
     CreaPersone();
-    inserisciTab();
-    SetDay(7); 
-    aggiornaTabella();
+    inserisciTab(); 
+    creaTabella();
+    handleSelection();
 });
 
 function mostraOrarioPreciso() {
@@ -56,12 +52,12 @@ function mostraOrarioPreciso() {
     document.getElementById("orarioPreciso").innerHTML = orario;
 }
 
-setInterval(mostraOrarioPreciso(), 1000); // Aggiorna l'orario ogni secondo
+setInterval(mostraOrarioPreciso, 1000); // Aggiorna l'orario ogni secondo
 
 
 
 
-function aggiornaTabella() {
+function creaTabella() {
 
     var table = new Tabulator("#projectTable", {
         data: dati,
@@ -131,13 +127,6 @@ function inserisciTab() {
     document.getElementsByClassName("third")[0].innerHTML = string
 }
 
-function SetDay(giorni) {
-    const temp = document.querySelector('.grid');
-    temp.style.gridTemplateColumns = "repeat(" + giorni + ", 1fr);"
-    inseriscidiv(giorni);
-    inseriscigiorni(giorni);
-}
-
 function inseriscidiv(giorni) {
     document.getElementsByClassName("third_")[0].innerHTML = ""
     let string = "";
@@ -156,6 +145,10 @@ function inseriscigiorni(giorni) {
     document.getElementsByClassName("project")[0].innerHTML = string
 }
 
-
-
-
+function handleSelection(){
+    var giorni = document.getElementById("days").value;
+    document.getElementsByClassName("grid")[0].style = "grid-template-columns: repeat(" + giorni + ", 1fr);";
+    document.getElementsByClassName("grid")[1].style = "grid-template-columns: repeat(" + giorni + ", 1fr);";
+    inseriscidiv(giorni);
+    inseriscigiorni(giorni);
+}

@@ -21,14 +21,11 @@
             <div id="orarioPreciso"></div>
             <div>
                 <form>
-                    <label id="giorni" for="day">Giorni: </label>
-                    <input list="days" name="day" id="day" placeholder="Scegli una misura">
-                    <datalist id="days">
-                        <option value="7 giorni" onselect="SetDay(7)">
-                        <option value="15 giorni" onclick="SetDay(15)">
-                        <option value="30 giorni" onclick="SetDay(30)">
-                        <option value="60 giorni" onclick="SetDay(60)"></option>
-                    </datalist>
+                    <select id="days" onchange="handleSelection()">
+                        <option value="7" selected>7 giorni</option>
+                        <option value="14">14 giorni</option>
+                        <option value="30">30 giorni</option>
+                    </select>
                 </form>
             </div>
         </div>

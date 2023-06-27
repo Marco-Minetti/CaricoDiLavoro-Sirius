@@ -56,7 +56,7 @@ function mostraOrarioPreciso() {
     document.getElementById("orarioPreciso").innerHTML = orario;
 }
 
-setInterval(mostraOrarioPreciso, 1000); // Aggiorna l'orario ogni secondo
+setInterval(mostraOrarioPreciso(), 1000); // Aggiorna l'orario ogni secondo
 
 
 
@@ -117,6 +117,7 @@ function CreaPersone() {
         pezzo.push(nome, team, coso)
         listaTab1.push(pezzo)
     }
+    console.log(listaTab1)
 }
 
 /*==================Crea Tabella========================= */

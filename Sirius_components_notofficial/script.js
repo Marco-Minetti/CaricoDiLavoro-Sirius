@@ -122,12 +122,12 @@ function CreaPersone() {
 /*==================Crea Tabella========================= */
 function inserisciTab() {
     /*'<div><div class="data"><div class="name"></div><div class="information"></div></div></div>'*/
-    tab = document.getElementById("sinistro").innerHTML = ""
+    tab = document.getElementsByClassName("third")[0].innerHTML = ""
     let string = ""
     for (i = 0; i < listaTab1.length; i++) {
         string += '<div><div class="data"><div class="name">' + listaTab1[i][0] + '</div><div class="information">' + listaTab1[i][1] + '</div></div></div>'
     }
-    document.getElementById("sinistro").innerHTML = string
+    document.getElementsByClassName("third")[0].innerHTML = string
 }
 
 function SetDay(giorni) {

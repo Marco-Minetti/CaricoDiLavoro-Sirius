@@ -44,7 +44,7 @@ body {
 
 .third_ {
     display: grid;
-    grid-template-columns: repeat(15, 1fr);
+    grid-template-columns: repeat(7, 1fr);
     grid-template-rows: repeat(8, 1fr);
 }
 

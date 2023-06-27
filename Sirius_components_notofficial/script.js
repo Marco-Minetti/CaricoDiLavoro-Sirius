@@ -131,7 +131,7 @@ function inserisciTab() {
 }
 
 function SetDay(giorni) {
-    const temp = document.querySelector('.grid');
+    const temp = document.getElementsByClassName('grid')[0];
     temp.style.gridTemplateColumns = "repeat(" + giorni + ", 1fr);"
     inseriscidiv(giorni);
     inseriscigiorni(giorni);

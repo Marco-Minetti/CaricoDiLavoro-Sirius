@@ -149,6 +149,8 @@ function handleSelection(){
     var giorni = document.getElementById("days").value;
     document.getElementsByClassName("grid")[0].style = "grid-template-columns: repeat(" + giorni + ", 1fr);";
     document.getElementsByClassName("grid")[1].style = "grid-template-columns: repeat(" + giorni + ", 1fr);";
+    document.getElementsByClassName("row")[0].style = "grid-template-rows: repeat(" + listaTab1.length + ", 1fr);";
+    document.getElementsByClassName("row")[1].style = "grid-template-rows: repeat(" + listaTab1.length + ", 1fr);";
     inseriscidiv(giorni);
     inseriscigiorni(giorni);
 }

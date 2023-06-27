@@ -36,20 +36,13 @@ body {
     border-right: 2px solid #E5E5E5;
 }
 
-
 .third {
     display: grid;
-    grid-template-rows: repeat(8, 1fr);
     border-right: 2px solid #E5E5E5;
-}
-
-.grid {
-    grid-template-columns: repeat(7, 1fr);
 }
 
 .third_ {
     display: grid;
-    grid-template-rows: repeat(8, 1fr);
 }
 
 .third_ > div {
@@ -62,6 +55,14 @@ body {
     padding-top: 0.5vh;
     padding-left: 3vh;
     border-top: 2px solid #E5E5E5;
+}
+
+.grid {
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.row {
+    grid-template-rows: repeat(8, 1fr);
 }
 
 input

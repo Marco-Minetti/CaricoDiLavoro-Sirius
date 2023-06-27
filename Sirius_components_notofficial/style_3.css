@@ -20,7 +20,7 @@ body {
     font-size: larger;
     font-weight: bolder;
     color: #14213D;
-    border-right: 2px solid #E5E5E5;
+    border-right: 2px solid #14213D;
 }
 
 .first_ {
@@ -33,12 +33,12 @@ body {
 
 .second {
     margin-left: 2vh;
-    border-right: 2px solid #E5E5E5;
+    border-right: 2px solid #14213D;
 }
 
 .third {
     display: grid;
-    border-right: 2px solid #E5E5E5;
+    border-right: 2px solid #14213D;
 }
 
 .third_ {
@@ -46,7 +46,7 @@ body {
 }
 
 .third_ > div {
-    border-top: 2px solid #E5E5E5;
+    border-top: 2px solid #14213D;
     border-left: 2px dashed gainsboro;
     display: grid;
     align-items: center;
@@ -54,7 +54,7 @@ body {
 .third > div {
     padding-top: 0.5vh;
     padding-left: 3vh;
-    border-top: 2px solid #E5E5E5;
+    border-top: 2px solid #14213D;
 }
 
 .grid {
@@ -70,7 +70,7 @@ input
     width:17vh;
     color:#14213D;
     background-color: white;
-    border: 3px solid #fca311;
+    border: 3px solid #E5E5E5;
     border-radius: 10px;
 }
 
@@ -91,15 +91,15 @@ label.responsabili   {
     text-align: center;
     align-items: center;
     border-top: 2px solid #14213D;
-    border-bottom: 2px solid #E5E5E5 ;
-    background-color: #fca311;
+    border-bottom: 2px solid #14213D;
+    background-color: #E5E5E5;
 }
 
 .project > div {
     width: 100%;
     height: 6vh;
     color: #14213D;
-    border-left: 2px dashed #E5E5E5;
+    border-left: 2px dashed #14213D;
     display: grid;
     align-content: center;
     justify-content: center;
@@ -151,7 +151,7 @@ label.responsabili   {
 }
 
 .information {
-    color: #fca311 ;
+    color: #5c6b73;
 }
 
 #projectTable {

@@ -131,11 +131,8 @@ function inserisciTab() {
 }
 
 function SetDay(giorni) {
-    const temp = document.querySelector('.third_');
-    const stemp = document.querySelector('project');
-    temp.classList.replace('repeat(7, 1fr);', 'repeat( ' + giorni + ', 1fr);');
-    stemp.classList.replace('repeat(7, 1fr);', 'repeat( ' + giorni + ', 1fr);');
-
+    const temp = document.querySelector('.grid');
+    temp.style.gridTemplateColumns = "repeat(" + giorni + ", 1fr);"
     inseriscidiv(giorni);
     inseriscigiorni(giorni);
 }

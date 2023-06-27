@@ -42,9 +42,12 @@ body {
     border-right: 2px solid gray;
 }
 
+.grid {
+    grid-template-columns: repeat(7, 1fr);
+}
+
 .third_ {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
     grid-template-rows: repeat(8, 1fr);
 }
 
@@ -81,7 +84,6 @@ label.responsabili   {
 
 .project {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
     height: 6vh;
     margin-top: 3.7vh;
     text-align: center;

@@ -29,7 +29,7 @@ $(document).ready(async function () {
     inserisciTab();
     creaTabella();
     handleSelection();
-    creaGiorni(); //mettere il valore di inizio della tabella e quello di fine
+    //creaGiorni(); //mettere il valore di inizio della tabella e quello di fine
 });
 
 function mostraOrarioPreciso() {
@@ -139,10 +139,8 @@ function checkFestivo(data) {
 }
 
 function creaGiorni(inizio, fine) {
-    inizio = new Date(inizio);
-    fine = new Date(fine);
     for (i = 0; i < listaTab1.length; i++) {
-        oreGiornata = dataCorretta(inizio, fine, listaTab1[i].fields.startDate, listaTab1[i].fields.endDate);
+        oreGiornata = dataCorretta(inizio, fine, listaTab1[i][2].startDate, listaTab1[i][2].dueDate);
         console.log(oreGiornata)
     }
 
@@ -184,10 +182,14 @@ function inseriscidiv(giorni) {
 function inseriscigiorni(giorni) {
     document.getElementsByClassName("project")[0].innerHTML = "";
     let string = "";
-    for (i = 1; i <= giorni; i++) {
-        string += '<div><div>' + i + '</div></div>'
+    oggi = new Date();
+    fine = new Date();
+    fine.setDate(oggi.getDate() + giorni)
+    for (i = oggi, j= 0; j < giorni; i.setDate(i.getDate() + 1), j++) {
+        string += '<div><div>' + i.getDate() + '</div></div>'
     }
     document.getElementsByClassName("project")[0].innerHTML = string
+    creaGiorni(oggi, fine);
 }
 
 function handleSelection() {

@@ -63,6 +63,7 @@ function creaTabella() {
 
     var table = new Tabulator("#projectTable", {
         data: dati,
+        selectable:true,
         height: "311px",
         columns: [
             { title: "ID", field: "idReadable" },
@@ -73,6 +74,11 @@ function creaTabella() {
             { title: "WorkEffort", field: "fields.workEffort" },
         ],
     });
+    //table.selectRow(1);
+    //var selector_table = table.selectRow("data[0].fields.startDate > data[0].fields.dueDate");
+    //selector_table.style.backgroundColor = 'red';
+
+    //selector_table = data.getData().startDate > data.getData().dueDate;
 
 }
 
@@ -80,6 +86,18 @@ async function leggiticket() {
     let file = 'https://localhost:7075/Dati';
     const response = await fetch(file);
     data = await response.json();
+    for(i = 0; i < data.length; i++) {
+        if ( data[i].fields.startDate > data[i].fields.dueDate ) {
+            data[i].style= "true";
+        }
+        else {
+            data[i].style= "false";
+        }
+        if (data[i].style = "true") {
+            var r = data[i].select();
+            r.style = "backgrownd-color: red";
+        }
+    }
 
 
 

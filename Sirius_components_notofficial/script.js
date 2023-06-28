@@ -125,6 +125,7 @@ function inserisciTab() {
         string += '<div><div class="data"><div class="name">' + listaTab1[i][0] + '</div><div class="information">' + listaTab1[i][1] + '</div></div></div>'
     }
     document.getElementsByClassName("third")[0].innerHTML = string;
+    document.getElementsByClassName("row")[0].style = "grid-template-rows: repeat(" + listaTab1.length + ", 1fr);";
 }
 
 function inseriscidiv(giorni) {
@@ -148,9 +149,7 @@ function inseriscigiorni(giorni) {
 function handleSelection(){
     var giorni = document.getElementById("days").value;
     document.getElementsByClassName("grid")[0].style = "grid-template-columns: repeat(" + giorni + ", 1fr);";
-    document.getElementsByClassName("grid")[1].style = "grid-template-columns: repeat(" + giorni + ", 1fr);";
-    document.getElementsByClassName("row")[0].style = "grid-template-rows: repeat(" + listaTab1.length + ", 1fr);";
-    document.getElementsByClassName("row")[1].style = "grid-template-rows: repeat(" + listaTab1.length + ", 1fr);";
+    document.getElementsByClassName("grid")[1].style = "grid-template-columns: repeat(" + giorni + ", 1fr); grid-template-rows: repeat(" + listaTab1.length + ", 1fr);";
     inseriscidiv(giorni);
     inseriscigiorni(giorni);
 }

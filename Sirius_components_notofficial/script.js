@@ -64,6 +64,12 @@ function creaTabella() {
     var table = new Tabulator("#projectTable", {
         data: dati,
         selectable:true,
+        rowFormatter:function(columns) {
+            if(columns.getData().style == "false") {
+                columns.getElement().style.backgroundColor = "#720026";
+                columns.getElement().style.color = "white";
+            }
+        },
         height: "311px",
         columns: [
             { title: "ID", field: "idReadable" },
@@ -72,6 +78,7 @@ function creaTabella() {
             { title: "StartDate", field: "fields.startDate" },
             { title: "EndDate", field: "fields.dueDate" },
             { title: "WorkEffort", field: "fields.workEffort" },
+            { title: "Error", field: "style", formatter:"tickCross" },
         ],
     });
     //table.selectRow(1);
@@ -88,17 +95,12 @@ async function leggiticket() {
     data = await response.json();
     for(i = 0; i < data.length; i++) {
         if ( data[i].fields.startDate > data[i].fields.dueDate ) {
-            data[i].style= "true";
-        }
-        else {
             data[i].style= "false";
         }
-        if (data[i].style = "true") {
-            var r = data[i].select();
-            r.style = "backgrownd-color: red";
+        else {
+            data[i].style= "true";
         }
     }
-
 
 
     return data;

@@ -140,24 +140,36 @@ function checkFestivo(data) {
 
 function creaGiorni(inizio, fine) {
     for (i = 0; i < listaTab1.length; i++) {
-        oreGiornata = dataCorretta(inizio, fine, listaTab1[i][2].startDate, listaTab1[i][2].dueDate);
-        console.log(oreGiornata)
+
+        for (j = 0; j < listaTab1[i][2].length; j++) {
+            oreGiornata = dataCorretta(inizio, fine, listaTab1[i][2][j].startDate, listaTab1[i][2][j].dueDate);
+            console.log(oreGiornata)
+        }
     }
 
 
 }
+//            inizio tabella, fine tabella, start ticket, end ticket
 function dataCorretta(inizio, fine, startDate, dueDate) {
-    start = new Date(inizio)
-    end = new Date(fine)
-    startDate = new Date(startDate)
-    endDate = new Date(dueDate)
     giorni = []
-    while (startDate < dueDate) {
-        if (startDate < end && startDate > start) giorni.push(startDate);
-        startDate.setDate(startDate.getDate() + 1);
+    workingDay = new Date(startDate)
+    endDate = new Date(dueDate)
+    while(workingDay <= fine){
+        if(workingDay > inizio) {
+            push = new Date()
+            push.setDate(workingDay.getDate() - 1)
+            giorni.push(push)}
+        workingDay.setDate(workingDay.getDate() + 1)
     }
-    return giorni;
+    // potrebbe dare errori quando il ticket inizia o finisce sulla tabella
+    // fare un check che aggiunge degli zeri in testa o in coda se questa cosa accade
+    return giorni
 
+}
+function checkFormat(giorni, start, end){
+    if(giorni.length != 7){
+        // aggiungere gli zeri
+    }
 }
 /*==================Crea Tabella========================= */
 function inserisciTab() {
@@ -185,12 +197,12 @@ function inseriscigiorni(giorni) {
     let string = "";
     oggi = new Date();
     fine = new Date();
-    fine.setDate(oggi.getDate() + giorni)
-    for (i = oggi, j= 0; j < giorni; i.setDate(i.getDate() + 1), j++) {
+    fine.setDate(oggi.getDate() + parseInt(giorni))
+    for (i = oggi, j = 0; j < giorni; i.setDate(i.getDate() + 1), j++) {
         string += '<div><div>' + i.getDate() + '</div></div>'
     }
     document.getElementsByClassName("project")[0].innerHTML = string
-    creaGiorni(oggi, fine);
+    creaGiorni(new Date(), fine);
 }
 
 function handleSelection() {

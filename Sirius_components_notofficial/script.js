@@ -169,16 +169,16 @@ function inserisciTab() {
     for (i = 0; i < listaTab1.length; i++) {
         string += '<div><div class="data"><div class="name">' + listaTab1[i][0] + '</div><div class="information">' + listaTab1[i][1] + '</div></div></div>'
     }
-    document.getElementsByClassName("third")[0].innerHTML = string
+    document.getElementsByClassName("third")[0].innerHTML = string;
 }
 
 function inseriscidiv(giorni) {
-    document.getElementsByClassName("third_")[0].innerHTML = ""
+    document.getElementsByClassName("third_")[0].innerHTML = "";
     let string = "";
     for (i = 0; i < listaTab1.length * giorni; i++) {
-        string += '<div></div>'
+        string += '<div></div>';
     }
-    document.getElementsByClassName("third_")[0].innerHTML = string
+    document.getElementsByClassName("third_")[0].innerHTML = string;
 }
 
 function inseriscigiorni(giorni) {
@@ -194,6 +194,8 @@ function handleSelection() {
     var giorni = document.getElementById("days").value;
     document.getElementsByClassName("grid")[0].style = "grid-template-columns: repeat(" + giorni + ", 1fr);";
     document.getElementsByClassName("grid")[1].style = "grid-template-columns: repeat(" + giorni + ", 1fr);";
+    document.getElementsByClassName("row")[0].style = "grid-template-rows: repeat(" + listaTab1.length + ", 1fr);";
+    document.getElementsByClassName("row")[1].style = "grid-template-rows: repeat(" + listaTab1.length + ", 1fr);";
     inseriscidiv(giorni);
     inseriscigiorni(giorni);
 }

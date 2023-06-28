@@ -8924,19 +8924,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\dfj24\\.nuget\\packages\\": {}
+    "C:\\Users\\playm\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\dfj24\\OneDrive\\Documenti\\GitHub\\CaricoDiLavoro-Sirius\\ProvaAPI\\ProvaAPI\\ProvaAPI.csproj",
+      "projectUniqueName": "C:\\Users\\playm\\Desktop\\Sirius\\CaricoDiLavoro-Sirius\\ProvaAPI\\ProvaAPI\\ProvaAPI.csproj",
       "projectName": "ProvaAPI",
-      "projectPath": "C:\\Users\\dfj24\\OneDrive\\Documenti\\GitHub\\CaricoDiLavoro-Sirius\\ProvaAPI\\ProvaAPI\\ProvaAPI.csproj",
-      "packagesPath": "C:\\Users\\dfj24\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\dfj24\\OneDrive\\Documenti\\GitHub\\CaricoDiLavoro-Sirius\\ProvaAPI\\ProvaAPI\\obj\\",
+      "projectPath": "C:\\Users\\playm\\Desktop\\Sirius\\CaricoDiLavoro-Sirius\\ProvaAPI\\ProvaAPI\\ProvaAPI.csproj",
+      "packagesPath": "C:\\Users\\playm\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\playm\\Desktop\\Sirius\\CaricoDiLavoro-Sirius\\ProvaAPI\\ProvaAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\dfj24\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\playm\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8944,7 +8944,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\sdk\\7.0.302\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -9027,7 +9026,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -184,8 +184,12 @@ function dataCorretta(inizio, fine, startDate, dueDate) {
     return giorni
 
 }
-function checkFormat(giorni, start, end){
+function checkFormat(giorni, start){
     if(giorni.length != 7){
+        for(i=0; i<7; i++, start.setDate(start.getDate() + parseInt(1))){
+            if(giorni[i] > start.getDate()) cacato = 0//aggiungi zeri prima
+            else cacato = 1//aggiungi zeri dopo
+        }
         // aggiungere gli zeri
     }
 }

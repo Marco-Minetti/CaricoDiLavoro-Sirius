@@ -138,7 +138,7 @@ function CreaPersone() {
         listaTab1.push(pezzo)
     }
 }
-function getAvg(start, end, minutes) {
+function getAvg(start, end, minutes) { //calcola il workEfford per giorno
     data1 = new Date(start);
     data2 = new Date(end);
     let numeroGiorni = 0;
@@ -150,7 +150,7 @@ function getAvg(start, end, minutes) {
     return (minutes / 60 / numeroGiorni)
 
 }
-function checkFestivo(data) {
+function checkFestivo(data) {  //controllo weekend
     data = new Date(data);
     giornoSettimana = data.getDay();
     if (giornoSettimana == 0 || giornoSettimana == 6) {   //0 = domenica, 6 = sabato
@@ -159,10 +159,11 @@ function checkFestivo(data) {
 }
 
 function creaGiorni(inizio, fine) {
+    g = 2;
     for (i = 0; i < listaTab1.length; i++) {
 
         for (j = 0; j < listaTab1[i][2].length; j++) {
-            oreGiornata = dataCorretta(inizio, fine, listaTab1[i][2][j].startDate, listaTab1[i][2][j].dueDate);
+            oreGiornata = dataCorretta(inizio, fine, listaTab1[i][g][j].startDate, listaTab1[i][g][j].dueDate);
             console.log(oreGiornata)
         }
     }

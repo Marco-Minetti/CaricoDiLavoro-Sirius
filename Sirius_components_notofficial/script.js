@@ -10,13 +10,14 @@ class Person {
     }
 }
 class Pezzi {
-    constructor(id, prio, dueDate, endDate, workEffort, state) {
+    constructor(id, prio, dueDate, start, workEffort, state, avg) {
         this.id = id
         this.prio = prio
         this.dueDate = dueDate
-        this.endDate = endDate
+        this.startDate = start
         this.workEffort = workEffort
         this.state = state
+        this.avg = avg
     }
 }
 
@@ -25,9 +26,10 @@ $(document).ready(async function () {
     mostraOrarioPreciso();
     Calcolini();
     CreaPersone();
-    inserisciTab(); 
+    inserisciTab();
     creaTabella();
     handleSelection();
+    //creaGiorni(); //mettere il valore di inizio della tabella e quello di fine
 });
 
 function mostraOrarioPreciso() {
@@ -105,7 +107,9 @@ function CreaPersone() {
         let team
         for (j = 0; j < persone.length; j++) {
             if (persone[j].nome == personeUniche[i].nome && persone[j].team == personeUniche[i].team) {
-                coso.push(new Pezzi(data[j].idReadable, data[j].fields.priority, data[j].fields.dueDate, data[j].fields.startDate, data[j].fields.workEffort, data[j].fields.state))
+                coso.push(new Pezzi(data[j].idReadable, data[j].fields.priority, data[j].fields.dueDate, data[j].fields.startDate, data[j].fields.workEffort, data[j].fields.state,
+                    getAvg(data[j].fields.startDate, data[j].fields.dueDate, data[j].fields.workEffort)
+                ))
                 nome = persone[j].nome
                 team = persone[j].team
             }
@@ -113,9 +117,48 @@ function CreaPersone() {
         pezzo.push(nome, team, coso)
         listaTab1.push(pezzo)
     }
-    console.log(listaTab1)
+}
+function getAvg(start, end, minutes) {
+    data1 = new Date(start);
+    data2 = new Date(end);
+    let numeroGiorni = 0;
+    while (data1 < data2) {
+        if (checkFestivo(data1)) { numeroGiorni++; }
+        data1.setDate(data1.getDate() + 1);
+    }
+    if (numeroGiorni == 0) { return 0 } // aggiungere messaggio di errore
+    return (minutes / 60 / numeroGiorni)
+
+}
+function checkFestivo(data) {
+    data = new Date(data);
+    giornoSettimana = data.getDay();
+    if (giornoSettimana == 0 || giornoSettimana == 6) {   //0 = domenica, 6 = sabato
+        return false;
+    } else { return true; }
 }
 
+function creaGiorni(inizio, fine) {
+    for (i = 0; i < listaTab1.length; i++) {
+        oreGiornata = dataCorretta(inizio, fine, listaTab1[i][2].startDate, listaTab1[i][2].dueDate);
+        console.log(oreGiornata)
+    }
+
+
+}
+function dataCorretta(inizio, fine, startDate, dueDate) {
+    start = new Date(inizio)
+    end = new Date(fine)
+    startDate = new Date(startDate)
+    endDate = new Date(dueDate)
+    giorni = []
+    while (startDate < dueDate) {
+        if (startDate < end && startDate > start) giorni.push(startDate);
+        startDate.setDate(startDate.getDate() + 1);
+    }
+    return giorni;
+
+}
 /*==================Crea Tabella========================= */
 function inserisciTab() {
     /*'<div><div class="data"><div class="name"></div><div class="information"></div></div></div>'*/
@@ -140,13 +183,17 @@ function inseriscidiv(giorni) {
 function inseriscigiorni(giorni) {
     document.getElementsByClassName("project")[0].innerHTML = "";
     let string = "";
-    for (i = 1; i <= giorni; i++) {
-        string += '<div><div>' + i + '</div></div>'
+    oggi = new Date();
+    fine = new Date();
+    fine.setDate(oggi.getDate() + giorni)
+    for (i = oggi, j= 0; j < giorni; i.setDate(i.getDate() + 1), j++) {
+        string += '<div><div>' + i.getDate() + '</div></div>'
     }
     document.getElementsByClassName("project")[0].innerHTML = string
+    creaGiorni(oggi, fine);
 }
 
-function handleSelection(){
+function handleSelection() {
     var giorni = document.getElementById("days").value;
     document.getElementsByClassName("grid")[0].style = "grid-template-columns: repeat(" + giorni + ", 1fr);";
     document.getElementsByClassName("grid")[1].style = "grid-template-columns: repeat(" + giorni + ", 1fr); grid-template-rows: repeat(" + listaTab1.length + ", 1fr);";

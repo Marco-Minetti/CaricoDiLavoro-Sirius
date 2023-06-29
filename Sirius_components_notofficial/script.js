@@ -164,7 +164,7 @@ function creaGiorni(inizio, fine) {
 
         for (j = 0; j < listaTab1[i][2].length; j++) {
             oreGiornata = dataCorretta(inizio, fine, listaTab1[i][g][j].startDate, listaTab1[i][g][j].dueDate);
-            console.log(oreGiornata)
+            console.log(oreGiornata);
         }
     }
 
@@ -172,29 +172,34 @@ function creaGiorni(inizio, fine) {
 }
 //            inizio tabella, fine tabella, start ticket, end ticket
 function dataCorretta(inizio, fine, startDate, dueDate) {
-    giorni = []
-    workingDay = new Date(startDate)
-    endDate = new Date(dueDate)
-    while(workingDay <= fine){
-        if(workingDay > inizio) {
-            push = new Date()
-            push.setDate(workingDay.getDate() - 1)
-            giorni.push(push)}
-        workingDay.setDate(workingDay.getDate() + 1)
+    giorni = [];
+    workingDay = new Date(startDate);
+    endDate = new Date(dueDate);
+    while(workingDay.getTime() >= inizio.getTime() && workingDay.getTime() <= fine.getTime()){
+        let toDate = new Date(workingDay);
+        giorni.push(toDate);
+        workingDay.setDate(workingDay.getDate() + 1);
     }
     // potrebbe dare errori quando il ticket inizia o finisce sulla tabella
     // fare un check che aggiunge degli zeri in testa o in coda se questa cosa accade
-    return giorni
+    return giorni;
 
 }
 function checkFormat(giorni, start){
+    /*
     if(giorni.length != 7){
         for(i=0; i<7; i++, start.setDate(start.getDate() + parseInt(1))){
-            if(giorni[i] > start.getDate()) cacato = 0//aggiungi zeri prima
-            else cacato = 1//aggiungi zeri dopo
+            if(giorni[i] > start.getDate()) check = 0//aggiungi zeri prima
+            else check = 1//aggiungi zeri dopo
         }
         // aggiungere gli zeri
-    }
+    } 
+
+    for (i = 0; i < giorni.length; i++) {
+        if ( giorni[i] > start.getDate()) {
+
+        }
+    }*/
 }
 /*==================Crea Tabella========================= */
 function inserisciTab() {
@@ -212,7 +217,24 @@ function inseriscidiv(giorni) {
     document.getElementsByClassName("third_")[0].innerHTML = "";
     let string = "";
     for (i = 0; i < listaTab1.length * giorni; i++) {
-        string += '<div></div>';
+        color = "white";
+        uno = Math.random() * (90 - 0 + 1) + 0;
+        num = Math.floor(uno) / 10;
+        if (num == 0) {
+            num = "";
+        } else if(num > 8) {
+            color = "darkred";
+        }
+        else if(num > 0 && num <= 3) {
+            color = "green";
+        }
+        else if (num > 3 && num <= 6) {
+            color = "yellow"
+        }
+        else if(num > 6 && num <= 8) {
+            color = "orange"
+        }
+        string += '<div style=" background-color: ' + color + '; text-align: center">' + num + '</div>';
     }
     document.getElementsByClassName("third_")[0].innerHTML = string;
 }

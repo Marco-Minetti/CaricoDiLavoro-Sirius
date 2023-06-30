@@ -6,7 +6,7 @@ body {
     display: grid;
     grid-template: 10vh 10vh 1fr / 1fr 2fr;
     width: 90%;
-    height: 60vh;
+    height: 50vh;
     margin: 0 auto;
     border: 2px solid black;
     border-radius: 10px;

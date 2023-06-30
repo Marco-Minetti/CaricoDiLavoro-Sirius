@@ -216,26 +216,37 @@ function inserisciTab() {
 function inseriscidiv(giorni) {
     document.getElementsByClassName("third_")[0].innerHTML = "";
     let string = "";
-    for (i = 0; i < listaTab1.length * giorni; i++) {
-        color = "white";
-        uno = Math.random() * (90 - 0 + 1) + 0;
-        num = Math.floor(uno) / 10;
-        if (num == 0) {
-            num = "";
-        } else if(num > 8) {
-            color = "darkred";
+    var dataOdierna = new Date();
+    for (i = 0; i < listaTab1.length; i++) {
+        for(j = 0; j < giorni; j++) {
+            if (checkFestivo(dataOdierna)) {
+                color = "white";
+                uno = Math.random() * (90 - 0 + 1) + 0;
+                num = Math.floor(uno) / 10;
+                if (num == 0) {
+                    num = "";
+                } else if(num > 8) {
+                    color = "darkred";
+                }
+                else if(num > 0 && num <= 3) {
+                    color = "green";
+                }
+                else if (num > 3 && num <= 6) {
+                    color = "yellow"
+                }
+                else if(num > 6 && num <= 8) {
+                    color = "orange"
+                }
+                string += '<div style=" background-color: ' + color + '; text-align: center">' + num + '</div>';
+            }
+            else {
+                string += '<div style=" background-color: #9c9c9c; text-align: center"></div>';
+            }
+            dataOdierna.setDate(dataOdierna.getDate() + 1);
         }
-        else if(num > 0 && num <= 3) {
-            color = "green";
-        }
-        else if (num > 3 && num <= 6) {
-            color = "yellow"
-        }
-        else if(num > 6 && num <= 8) {
-            color = "orange"
-        }
-        string += '<div style=" background-color: ' + color + '; text-align: center">' + num + '</div>';
+        dataOdierna = new Date(); 2 
     }
+
     document.getElementsByClassName("third_")[0].innerHTML = string;
 }
 

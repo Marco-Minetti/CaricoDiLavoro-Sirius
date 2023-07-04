@@ -139,6 +139,7 @@ function CreaPersone() {
                 ))
                 nome = persone[j].nome
                 team = persone[j].team
+                console.log(getAvg(data[j].fields.startDate, data[j].fields.dueDate, data[j].fields.workEffort), data[j].idReadable)
             }
         }
         pezzo.push(nome, team, coso)
@@ -168,15 +169,23 @@ function checkFestivo(data) {  //controllo weekend
 
 
 function calculateTicketDuration(data, startDate, endDate) {
-    const result = {};
+    const result = [];
 
     let currentAuthor = null;
     let authorTickets = [];
+    let inizio = new Date();
+    let fine = new Date();
+    fine = fine.setDate(fine.getDate() + 7);
 
-    for (const item of data) {
+    for (var item of data) {
         if (Array.isArray(item)) {
             if (currentAuthor !== null) {
-                result[currentAuthor] = calculateAuthorTicketDuration(authorTickets, startDate, endDate);
+                const authorIndex = result.findIndex((entry) => entry.author === currentAuthor);
+                if (authorIndex !== -1) {
+                    result[authorIndex].duration = calculateAuthorTicketDuration(authorTickets, startDate, endDate, inizio, fine);
+                } else {
+                    result.push({ author: currentAuthor, duration: calculateAuthorTicketDuration(authorTickets, startDate, endDate, inizio, fine) });
+                }
                 authorTickets = [];
             }
 
@@ -186,45 +195,51 @@ function calculateTicketDuration(data, startDate, endDate) {
     }
 
     if (currentAuthor !== null) {
-        result[currentAuthor] = calculateAuthorTicketDuration(authorTickets, startDate, endDate);
+        const authorIndex = result.findIndex((entry) => entry.author === currentAuthor);
+        if (authorIndex !== -1) {
+            result[authorIndex].duration = calculateAuthorTicketDuration(authorTickets, startDate, endDate, inizio, fine);
+        } else {
+            result.push({ author: currentAuthor, duration: calculateAuthorTicketDuration(authorTickets, startDate, endDate, inizio, fine) });
+        }
     }
 
     return result;
 }
 
-function calculateAuthorTicketDuration(tickets, startDate, endDate) {
-    const result = {};
-
-    for (const ticket of tickets) {
+function calculateAuthorTicketDuration(tickets, startDate, endDate, filterStart, filterEnd) {
+    var result = {};
+    const fine = new Date(filterEnd)
+    filterStart.setHours(11, 0, 0) // potrebbe dare problemi
+    for (var ticket of tickets) {
         const ticketStartDate = new Date(ticket.startDate);
         const ticketEndDate = new Date(ticket.dueDate);
 
         if (ticketStartDate <= endDate && ticketEndDate >= startDate) {
-            const days = Math.ceil((ticketEndDate - ticketStartDate) / (1000 * 60 * 60 * 24));
+            days = Math.ceil((ticketEndDate - ticketStartDate) / (1000 * 60 * 60 * 24));
 
             for (let i = 0; i < days; i++) {
-                const currentDate = new Date(ticketStartDate);
+                currentDate = new Date(ticketStartDate);
                 currentDate.setDate(ticketStartDate.getDate() + i);
-                const currentDateISO = currentDate.toISOString().split('T')[0];
+                currentDateISO = currentDate.toISOString().split('T')[0];
 
-                const avgValue = ticket.avg / days;
+                nome = ticket.id
+                avgValue = ticket.avg
 
-                if (!result[currentDateISO]) {
-                    result[currentDateISO] = {
-                        sum: 0,
-                        count: 0,
-                    };
+                if (currentDate >= filterStart && currentDate <= fine) {
+                    if (!result[currentDateISO]) {
+                        result[currentDateISO] = {
+                            sum: 0,
+                        };
+                    }
+
+                    result[currentDateISO].sum += avgValue;
                 }
-
-                result[currentDateISO].sum += avgValue;
-                result[currentDateISO].count++;
             }
         }
     }
 
-    // Calculate the average value for each date
-    for (const dateISO in result) {
-        result[dateISO] = result[dateISO].sum / result[dateISO].count;
+    for (var dateISO in result) {
+        result[dateISO] = result[dateISO].sum.toFixed(2);
     }
     return result;
 }
@@ -244,12 +259,18 @@ function inseriscidiv(giorni) {
     document.getElementsByClassName("third_")[0].innerHTML = "";
     let string = "";
     var dataOdierna = new Date();
-    for (i = 0; i < listaTab1.length; i++) {
-        for (j = 0; j < giorni; j++) {
-            if (checkFestivo(dataOdierna)) {
-                color = "white";
-                uno = Math.random() * (90 - 0 + 1) + 0;
-                num = Math.floor(uno) / 10;
+
+    fine = new Date()
+    fine = fine.setDate(fine.getDate() + 7)
+    strutturaFinale = calculateTicketDuration(listaTab1, new Date(), fine)
+
+    for (var ticket of strutturaFinale) {
+        for (let j = new Date(); j < fine; j.setDate(j.getDate() + 1)) {
+            ISOoggi = j.toISOString().split('T')[0]
+            if (checkFestivo(j)) {
+                color = "white"
+                num = ticket.duration[ISOoggi]
+                
                 if (num == 0) {
                     num = "";
                 } else if (num > 8) {
@@ -264,16 +285,15 @@ function inseriscidiv(giorni) {
                 else if (num > 6 && num <= 8) {
                     color = "orange"
                 }
-                string += '<div style=" background-color: ' + color + '; text-align: center">' + num + '</div>';
-            }
-            else {
-                string += '<div style=" background-color: #9c9c9c; text-align: center"></div>';
-            }
-            dataOdierna.setDate(dataOdierna.getDate() + 1);
-        }
-        dataOdierna = new Date(); 2
-    }
 
+                
+                if (num != undefined) {
+                    string += '<div style=" background-color: ' + color + '; text-align: center">' + num + '</div>'
+                } else string += '<div style=" background-color: ' + color + '; text-align: center">' + 0 + '</div>'
+
+            } else string += '<div style=" background-color: #9c9c9c; text-align: center"></div>';
+        }
+    }
     document.getElementsByClassName("third_")[0].innerHTML = string;
 }
 
@@ -287,8 +307,6 @@ function inseriscigiorni(giorni) {
         string += '<div><div>' + i.getDate() + '</div></div>'
     }
     document.getElementsByClassName("project")[0].innerHTML = string
-    cazzincu = calculateTicketDuration(listaTab1, new Date(), fine)
-    console.log(cazzincu)
 }
 
 function handleSelection() {

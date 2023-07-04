@@ -154,7 +154,7 @@ label.responsabili   {
 }
 
 #projectTable {
-    width:min-content;
+    width:max-content;
     margin: 0 auto;
     overflow: hidden;
 }

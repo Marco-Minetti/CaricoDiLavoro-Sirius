@@ -175,7 +175,7 @@ function calculateTicketDuration(data, startDate, endDate) {
     let authorTickets = [];
     let inizio = new Date();
     let fine = new Date();
-    fine = fine.setDate(fine.getDate() + 7);
+    fine = fine.setDate(fine.getDate() + parseInt(document.getElementById("days").value));
 
     for (var item of data) {
         if (Array.isArray(item)) {
@@ -261,7 +261,7 @@ function inseriscidiv(giorni) {
     var dataOdierna = new Date();
 
     fine = new Date()
-    fine = fine.setDate(fine.getDate() + 7)
+    fine = fine.setDate(fine.getDate() + parseInt(giorni))
     strutturaFinale = calculateTicketDuration(listaTab1, new Date(), fine)
 
     for (var ticket of strutturaFinale) {
@@ -270,7 +270,7 @@ function inseriscidiv(giorni) {
             if (checkFestivo(j)) {
                 color = "white"
                 num = ticket.duration[ISOoggi]
-                
+
                 if (num == 0) {
                     num = "";
                 } else if (num > 8) {

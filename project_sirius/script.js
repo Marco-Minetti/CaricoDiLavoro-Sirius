@@ -51,17 +51,20 @@ function mostraOrarioPreciso() {
 
     var anno = data.getFullYear();
 
-    var ore = data.getHours();
-    var minuti = data.getMinutes();
-    var secondi = data.getSeconds();
+    var ore = padZero(data.getHours());
+    var minuti = padZero(data.getMinutes());
+    var secondi = padZero(data.getSeconds());
 
     var orario = giorno + " " + numeroGiorno + " " + mese + " " + anno + " - Ora " + ore + ":" + minuti + ":" + secondi;
 
     document.getElementById("orarioPreciso").innerHTML = orario;
 }
 
-setInterval(mostraOrarioPreciso, 1000); // Aggiorna l'orario ogni secondo
+function padZero(numero) {
+    return numero < 10 ? "0" + numero : numero;
+}
 
+setInterval(mostraOrarioPreciso, 1000); // Aggiorna l'orario ogni secondo
 
 
 
@@ -134,7 +137,9 @@ function CreaPersone() {
         let team
         for (j = 0; j < persone.length; j++) {
             if (persone[j].nome == personeUniche[i].nome && persone[j].team == personeUniche[i].team) {
-                coso.push(new Pezzi(data[j].idReadable, data[j].fields.priority, data[j].fields.dueDate, data[j].fields.startDate, data[j].fields.workEffort, data[j].fields.state,
+                sD = new Date(data[j].fields.startDate).setHours(12,0,0,0)
+                eD = new Date(data[j].fields.dueDate).setHours(12,0,0,0)
+                coso.push(new Pezzi(data[j].idReadable, data[j].fields.priority, eD, sD, data[j].fields.workEffort, data[j].fields.state,
                     getAvg(data[j].fields.startDate, data[j].fields.dueDate, data[j].fields.workEffort)
                 ))
                 nome = persone[j].nome
@@ -209,7 +214,7 @@ function calculateTicketDuration(data, startDate, endDate) {
 function calculateAuthorTicketDuration(tickets, startDate, endDate, filterStart, filterEnd) {
     var result = {};
     const fine = new Date(filterEnd)
-    filterStart.setHours(11, 0, 0) // potrebbe dare problemi
+    filterStart.setHours(12, 0, 0, 0) // potrebbe dare problemi
     for (var ticket of tickets) {
         const ticketStartDate = new Date(ticket.startDate);
         const ticketEndDate = new Date(ticket.dueDate);
@@ -289,7 +294,7 @@ function inseriscidiv(giorni) {
                 
                 if (num != undefined) {
                     string += '<div style=" background-color: ' + color + '; text-align: center">' + num + '</div>'
-                } else string += '<div style=" background-color: ' + color + '; text-align: center">' + 0 + '</div>'
+                } else string += '<div style=" background-color: ' + color + '; text-align: center"></div>'
 
             } else string += '<div style=" background-color: #9c9c9c; text-align: center"></div>';
         }

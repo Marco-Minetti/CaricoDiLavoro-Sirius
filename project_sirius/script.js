@@ -9,12 +9,13 @@ class Person {
         this.team = group
     }
 }
+//modificare nome
 class Pezzi {
-    constructor(id, prio, dueDate, start, workEffort, state, avg) {
+    constructor(id, prio, dueDate, startDate, workEffort, state, avg) {
         this.id = id
         this.prio = prio
         this.dueDate = dueDate
-        this.startDate = start
+        this.startDate = startDate
         this.workEffort = workEffort
         this.state = state
         this.avg = avg
@@ -35,7 +36,6 @@ $(document).ready(async function () {
     inserisciTab();
     creaTabella();
     handleSelection();
-    //creaGiorni(); //mettere il valore di inizio della tabella e quello di fine
 });
 
 function mostraOrarioPreciso() {
@@ -164,72 +164,69 @@ function checkFestivo(data) {  //controllo weekend
         return false;
     } else { return true; }
 }
+/*==================Calcoli per la tabella=========================*/
 
-function creaGiorni(inizio, fine) {
-    const g = 2
-    oreGiornata = []
-    for (i = 0; i < listaTab1.length; i++) {
 
-        for (j = 0; j < listaTab1[i][2].length; j++) {
-            oreGiornata = dataCorretta(inizio, fine, listaTab1[i][g][j].startDate, listaTab1[i][g][j].dueDate, listaTab1[i][0]);
+function calculateTicketDuration(data, startDate, endDate) {
+    const result = {};
+
+    let currentAuthor = null;
+    let authorTickets = [];
+
+    for (const item of data) {
+        if (Array.isArray(item)) {
+            if (currentAuthor !== null) {
+                result[currentAuthor] = calculateAuthorTicketDuration(authorTickets, startDate, endDate);
+                authorTickets = [];
+            }
+
+            currentAuthor = item[0];
+            authorTickets = item[2];
         }
     }
 
+    if (currentAuthor !== null) {
+        result[currentAuthor] = calculateAuthorTicketDuration(authorTickets, startDate, endDate);
+    }
 
-    // somma dei ticket giornalieri di ogni persona
-    for(let i = 0; i<oreGiornata.length; i++){
-        for(let j = 0; j<oreGiornata.length; j++){
-            if(oreGiornata[i].nome == oreGiornata[j].nome){
-                let mediaGiornaliera = 0
+    return result;
+}
+
+function calculateAuthorTicketDuration(tickets, startDate, endDate) {
+    const result = {};
+
+    for (const ticket of tickets) {
+        const ticketStartDate = new Date(ticket.startDate);
+        const ticketEndDate = new Date(ticket.dueDate);
+
+        if (ticketStartDate <= endDate && ticketEndDate >= startDate) {
+            const days = Math.ceil((ticketEndDate - ticketStartDate) / (1000 * 60 * 60 * 24));
+
+            for (let i = 0; i < days; i++) {
+                const currentDate = new Date(ticketStartDate);
+                currentDate.setDate(ticketStartDate.getDate() + i);
+                const currentDateISO = currentDate.toISOString().split('T')[0];
+
+                const avgValue = ticket.avg / days;
+
+                if (!result[currentDateISO]) {
+                    result[currentDateISO] = {
+                        sum: 0,
+                        count: 0,
+                    };
+                }
+
+                result[currentDateISO].sum += avgValue;
+                result[currentDateISO].count++;
             }
         }
     }
 
-
-}
-function dailyAvg(array){
-    for(let i = 0; i<array.length; i++){
-        for(let j = 0; j<array.length; j++){
-
-        }
+    // Calculate the average value for each date
+    for (const dateISO in result) {
+        result[dateISO] = result[dateISO].sum / result[dateISO].count;
     }
-}
-//            inizio tabella, fine tabella, start ticket, end ticket, nome
-function dataCorretta(inizio, fine, startDate, dueDate, proprietario) {
-    contenitore = []
-    giorni = []
-    workingDay = new Date(startDate)
-    endDate = new Date(dueDate)
-    while (workingDay <= fine) {
-        if (workingDay > inizio) {
-            push = new Date()
-            push.setDate(workingDay.getDate() - 1)
-            giorni.push(push)
-        }
-        workingDay.setDate(workingDay.getDate() + 1)
-    }
-    checkFormat(giorni, inizio)
-    contenitore.push(new Contenitore(proprietario, giorni))
-    return contenitore;
-
-}
-//array di giorni visualizzati, inizio tabella
-function checkFormat(giorni, start) {
-    start = new Date(start)
-    phase = 0
-    // L'array di giorni DEVE essere 7
-    for (p = 0; p < 7; p++) {
-        if (giorni.length != 7) {
-            if (giorni[p] != start.getDate()) phase++
-        }
-        else return
-    }
-    for (p = 0; p < phase; p++) {
-        giorni.unshift(0)
-    }
-    while (giorni.length != 7) {
-        giorni.push(0)
-    }
+    return result;
 }
 /*==================Crea Tabella========================= */
 function inserisciTab() {
@@ -290,7 +287,8 @@ function inseriscigiorni(giorni) {
         string += '<div><div>' + i.getDate() + '</div></div>'
     }
     document.getElementsByClassName("project")[0].innerHTML = string
-    creaGiorni(new Date(), fine);
+    cazzincu = calculateTicketDuration(listaTab1, new Date(), fine)
+    console.log(cazzincu)
 }
 
 function handleSelection() {

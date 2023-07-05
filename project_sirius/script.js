@@ -34,8 +34,8 @@ $(document).ready(async function () {
     Calcolini();
     CreaPersone();
     inserisciTab();
-    creaTabella();
     handleSelection();
+    creaTabella();
 });
 
 function mostraOrarioPreciso() {
@@ -73,17 +73,19 @@ function creaTabella() {
     var table = new Tabulator("#projectTable", {
         data: dati,
         selectable: true,
-        rowFormatter: function (columns) {
-            if (columns.getData().style == "false") {
-                columns.getElement().style.backgroundColor = "#720026";
-                columns.getElement().style.color = "white";
+        layout: "fitColumns",
+        //layout: "fitDataStretch",
+        rowFormatter: function (row) {
+            if (row.getData().style == "false") {
+                row.getElement().style.backgroundColor = "#720026";
+                row.getElement().style.color = "white";
             }
         },
         height: "311px",
         columns: [
             { title: "ID", field: "idReadable" },
             { title: "Responsabile", field: "fields.assignee" },
-            { title: "Titolo", field: "summary" },
+            { title: "Titolo", field: "summary", widthGrow: 3 },
             { title: "StartDate", field: "fields.startDate" },
             { title: "EndDate", field: "fields.dueDate" },
             { title: "WorkEffort", field: "fields.workEffort" },
@@ -137,14 +139,13 @@ function CreaPersone() {
         let team
         for (j = 0; j < persone.length; j++) {
             if (persone[j].nome == personeUniche[i].nome && persone[j].team == personeUniche[i].team) {
-                sD = new Date(data[j].fields.startDate).setHours(12,0,0,0)
-                eD = new Date(data[j].fields.dueDate).setHours(12,0,0,0)
+                sD = new Date(data[j].fields.startDate).setHours(12, 0, 0, 0)
+                eD = new Date(data[j].fields.dueDate).setHours(12, 0, 0, 0)
                 coso.push(new Pezzi(data[j].idReadable, data[j].fields.priority, eD, sD, data[j].fields.workEffort, data[j].fields.state,
                     getAvg(data[j].fields.startDate, data[j].fields.dueDate, data[j].fields.workEffort)
                 ))
                 nome = persone[j].nome
                 team = persone[j].team
-                console.log(getAvg(data[j].fields.startDate, data[j].fields.dueDate, data[j].fields.workEffort), data[j].idReadable)
             }
         }
         pezzo.push(nome, team, coso)
@@ -215,14 +216,16 @@ function calculateAuthorTicketDuration(tickets, startDate, endDate, filterStart,
     var result = {};
     const fine = new Date(filterEnd)
     filterStart.setHours(12, 0, 0, 0) // potrebbe dare problemi
+    fine.setHours(12, 0, 0, 0)
+    endDate = new Date(endDate)
     for (var ticket of tickets) {
         const ticketStartDate = new Date(ticket.startDate);
         const ticketEndDate = new Date(ticket.dueDate);
-
         if (ticketStartDate <= endDate && ticketEndDate >= startDate) {
+            // questo è un incubo, ma credo sia l'unico modo
             days = Math.ceil((ticketEndDate - ticketStartDate) / (1000 * 60 * 60 * 24));
 
-            for (let i = 0; i < days; i++) {
+            for (let i = 0; i <= days; i++) {
                 currentDate = new Date(ticketStartDate);
                 currentDate.setDate(ticketStartDate.getDate() + i);
                 currentDateISO = currentDate.toISOString().split('T')[0];
@@ -236,15 +239,15 @@ function calculateAuthorTicketDuration(tickets, startDate, endDate, filterStart,
                             sum: 0,
                         };
                     }
-
                     result[currentDateISO].sum += avgValue;
+
                 }
             }
         }
     }
 
     for (var dateISO in result) {
-        result[dateISO] = result[dateISO].sum.toFixed(2);
+        result[dateISO] = result[dateISO].sum.toFixed(1);
     }
     return result;
 }
@@ -291,7 +294,7 @@ function inseriscidiv(giorni) {
                     color = "orange"
                 }
 
-                
+
                 if (num != undefined) {
                     string += '<div style=" background-color: ' + color + '; text-align: center">' + num + '</div>'
                 } else string += '<div style=" background-color: ' + color + '; text-align: center"></div>'

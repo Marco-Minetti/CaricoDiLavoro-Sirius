@@ -3,6 +3,7 @@ let dati;
 persone = []
 personeUniche = []
 listaTab1 = []
+toSee = []
 class Person {
     constructor(name, group) {
         this.nome = name
@@ -69,9 +70,16 @@ setInterval(mostraOrarioPreciso, 1000); // Aggiorna l'orario ogni secondo
 
 
 function creaTabella() {
-
+    let datiTabella = []
+    for(let i = 0; i<dati.length; i++){
+        for(let j = 0; j < toSee.length; j++){
+            if(toSee[j] == dati[i].idReadable){
+                datiTabella.push(dati[i])
+            }
+        }
+    }
     var table = new Tabulator("#projectTable", {
-        data: dati,
+        data: datiTabella,
         selectable: true,
         layout: "fitColumns",
         //layout: "fitDataStretch",
@@ -232,6 +240,7 @@ function calculateAuthorTicketDuration(tickets, startDate, endDate, filterStart,
 
                 nome = ticket.id
                 avgValue = ticket.avg
+                console.log(avgValue, nome)
 
                 if (currentDate >= filterStart && currentDate <= fine) {
                     if (!result[currentDateISO]) {
@@ -240,9 +249,11 @@ function calculateAuthorTicketDuration(tickets, startDate, endDate, filterStart,
                         };
                     }
                     result[currentDateISO].sum += avgValue;
-
+                    
                 }
             }
+            toSee.push(nome)
+            
         }
     }
 

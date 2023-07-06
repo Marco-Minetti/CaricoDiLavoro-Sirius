@@ -76,9 +76,12 @@ function creaTabella() {
             if (toSee[j] == dati[i].idReadable) {
                 datiTabella.push(dati[i]);
             }
+            
         }
+        if (dati[i].style == "false") { datiTabella.push(dati[i]) }
     }
     var table = new Tabulator("#projectTable", {
+        //per vedere tutti i dati basta scambiare questa variabile con dati
         data: datiTabella,
         selectable: true,
         layout: "fitColumns",
@@ -130,7 +133,7 @@ async function leggiticket() {
 /*==============Calcolini===============*/
 function Calcolini() {
     for (i = 0; i < data.length; i++) {
-            persone.push(new Person(data[i].fields.assignee, data[i].fields.team));
+        persone.push(new Person(data[i].fields.assignee, data[i].fields.team));
     }
     personeUniche = persone.filter(
         (person, index, self) =>
@@ -168,6 +171,15 @@ function CreaPersone() {
         pezzo.push(nome, team, coso);
         listaTab1.push(pezzo);
     }
+
+    //È importante rimuovere qui gli elementi nulli per via degli array paralleli
+    listaTab1 = listaTab1.filter(item =>
+        item.every(subItem => subItem !== null && !hasNullField(subItem))
+    );
+
+}
+function hasNullField(obj) {
+    return Object.values(obj).some(value => value === null || (typeof value === 'object' && hasNullField(value)));
 }
 
 function getAvg(start, end, minutes) { //calcola il workEfford per giorno

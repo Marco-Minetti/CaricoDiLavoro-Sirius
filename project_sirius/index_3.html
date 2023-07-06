@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,11 +12,12 @@
     <script src="script.js"></script>
     <link rel="stylesheet" href="style_3.css">
 </head>
+
 <body>
     <div class="global">
         <div class="first">
             <div>Workload</div>
-            
+
         </div>
         <div class="first_">
             <div id="orarioPreciso"></div>
@@ -26,6 +28,12 @@
                         <option value="14">14 giorni</option>
                         <option value="30">30 giorni</option>
                     </select>
+                </form>
+            </div>
+            <div class="direzione">
+                <form>
+                    <input type="button" value="<" id="bck" onclick="vaIndietro()">
+                    <input type="button" value=">" id="fwd" onclick="vaAvanti()">
                 </form>
             </div>
         </div>
@@ -50,7 +58,7 @@
             <div class="project grid">
                 <div>
                     <div></div>
-                </div>  
+                </div>
             </div>
         </div>
         <div class="third row">

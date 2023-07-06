@@ -158,6 +158,15 @@ label.responsabili   {
     margin: 0 auto;
     overflow: hidden;
 }
+.direzione{
+    padding-top: 12px;
+}
+#fwd{
+    width: 30px;
+}
+#bck{
+    width: 30px;
+}
 
 
 

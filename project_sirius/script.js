@@ -130,9 +130,7 @@ async function leggiticket() {
 /*==============Calcolini===============*/
 function Calcolini() {
     for (i = 0; i < data.length; i++) {
-        if (data[i].fields.assignee != null && data[i].fields.team) {
             persone.push(new Person(data[i].fields.assignee, data[i].fields.team));
-        }
     }
     personeUniche = persone.filter(
         (person, index, self) =>
@@ -140,19 +138,29 @@ function Calcolini() {
     )
 }
 function CreaPersone() {
-    for (i = 0; i < personeUniche.length; i++) {
-        pezzo = [];
-        coso = [];
+    for (let i = 0; i < personeUniche.length; i++) {
+        let pezzo = [];
+        let coso = [];
         let nome;
         let team;
-        for (j = 0; j < persone.length; j++) {
-            console.log(data[j].idReadable)
-            if (persone[j].nome == personeUniche[i].nome && persone[j].team == personeUniche[i].team) {
-                sD = new Date(data[j].fields.startDate).setHours(12, 0, 0, 0);
-                eD = new Date(data[j].fields.dueDate).setHours(12, 0, 0, 0);
-                coso.push(new Pezzi(data[j].idReadable, data[j].fields.priority, eD, sD, data[j].fields.workEffort, data[j].fields.state,
-                    getAvg(data[j].fields.startDate, data[j].fields.dueDate, data[j].fields.workEffort)
-                ));
+        for (let j = 0; j < data.length; j++) {
+            console.log(data[j].idReadable);
+            if (data[j].fields.assignee === personeUniche[i].nome && data[j].fields.team === personeUniche[i].team) {
+                let sD = new Date(data[j].fields.startDate);
+                sD.setHours(12, 0, 0, 0);
+                let eD = new Date(data[j].fields.dueDate);
+                eD.setHours(12, 0, 0, 0);
+                coso.push(
+                    new Pezzi(
+                        data[j].idReadable,
+                        data[j].fields.priority,
+                        eD,
+                        sD,
+                        data[j].fields.workEffort,
+                        data[j].fields.state,
+                        getAvg(data[j].fields.startDate, data[j].fields.dueDate, data[j].fields.workEffort)
+                    )
+                );
                 nome = persone[j].nome;
                 team = persone[j].team;
             }

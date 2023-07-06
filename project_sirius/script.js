@@ -79,7 +79,7 @@ function creaTabella() {
         }
     }
     var table = new Tabulator("#projectTable", {
-        data: dati,
+        data: datiTabella,
         selectable: true,
         layout: "fitColumns",
         //layout: "fitDataStretch",
@@ -146,6 +146,7 @@ function CreaPersone() {
         let nome;
         let team;
         for (j = 0; j < persone.length; j++) {
+            console.log(data[j].idReadable)
             if (persone[j].nome == personeUniche[i].nome && persone[j].team == personeUniche[i].team) {
                 sD = new Date(data[j].fields.startDate).setHours(12, 0, 0, 0);
                 eD = new Date(data[j].fields.dueDate).setHours(12, 0, 0, 0);
@@ -233,7 +234,6 @@ function calculateAuthorTicketDuration(tickets, startDate, endDate, filterStart,
         if (ticketStartDate <= endDate && ticketEndDate >= startDate) {
             // questo è un incubo, ma credo sia l'unico modo
             days = Math.ceil((ticketEndDate - ticketStartDate) / (1000 * 60 * 60 * 24));
-            console.log(ticket.id);
             for (let i = 0; i <= days; i++) {
                 currentDate = new Date(ticketStartDate);
                 currentDate.setDate(ticketStartDate.getDate() + i);
@@ -241,7 +241,6 @@ function calculateAuthorTicketDuration(tickets, startDate, endDate, filterStart,
 
                 nome = ticket.id;
                 avgValue = ticket.avg;
-                console.log(avgValue, nome);
 
                 if (currentDate >= filterStart && currentDate <= fine) {
                     if (!result[currentDateISO]) {

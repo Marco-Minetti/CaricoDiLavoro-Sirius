@@ -23,14 +23,21 @@
             <div id="orarioPreciso" onclick="goBack()"></div>
             <div>
                 <form>
-                    <input type="button" value="-" id="bck" onclick="vaIndietro()">
+                    <input type="button" value="--" id="bck" onclick="vaIndietro()">
+                    <input type="button" value="-1" id="bck1" onclick="vaIndietrino()">
                     <select id="days" onchange="handleSelection()">
                         <option value="7" selected>7 giorni</option>
                         <option value="14">14 giorni</option>
                         <option value="30">30 giorni</option>
                     </select>
-                    <input type="button" value="+" id="fwd" onclick="vaAvanti()">
+                    <input type="button" value="+1" id="fwd1" onclick="vaAvantino()">
+                    <input type="button" value="++" id="fwd" onclick="vaAvanti()">
                 </form>
+                
+                <div class="container">
+                    <div id="meseInizio">Mese inizio</div>
+                    <div id="meseFine">Mese fine</div>
+                  </div>
             </div>
         </div>
         <div class="second">

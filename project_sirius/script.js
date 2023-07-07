@@ -60,6 +60,7 @@ function mostraOrarioPreciso() {
     var orario = giorno + " " + numeroGiorno + " " + mese + " " + anno + " - Ora " + ore + ":" + minuti + ":" + secondi;
 
     document.getElementById("orarioPreciso").innerHTML = orario;
+    mostraMese(mesi)
 }
 
 function padZero(numero) {
@@ -351,6 +352,8 @@ function handleSelection() {
     inseriscidiv(giorni);
     inseriscigiorni(giorni);
 }
+
+/*===========Bottoni===============*/
 async function vaIndietro(){
     numero = document.getElementById("days").value;
     oggi = oggi.setDate(oggi.getDate() - parseInt(numero));
@@ -407,4 +410,55 @@ async function goBack(){
     inserisciTab();
     handleSelection();
     creaTabella();
+}
+async function vaIndietrino(){
+    numero = document.getElementById("days").value;
+    oggi = oggi.setDate(oggi.getDate() - parseInt(1));
+    oggi = new Date(oggi)
+
+    dati;
+    persone = [];
+    personeUniche = [];
+    listaTab1 = [];
+    toSee = [];
+
+    dati = await leggiticket();
+    mostraOrarioPreciso();
+    Calcolini();
+    CreaPersone();
+    inserisciTab();
+    handleSelection();
+    creaTabella();
+
+}
+async function vaAvantino(){
+    numero = document.getElementById("days").value;
+    oggi = oggi.setDate(oggi.getDate() + parseInt(1));
+    oggi = new Date(oggi);
+    
+    dati;
+    persone = [];
+    personeUniche = [];
+    listaTab1 = [];
+    toSee = [];
+
+    dati = await leggiticket();
+    mostraOrarioPreciso();
+    Calcolini();
+    CreaPersone();
+    inserisciTab();
+    handleSelection();
+    creaTabella();
+    
+}
+
+/*=============Mostra Mese============*/
+function mostraMese(listaMesi){
+    document.getElementById("meseInizio").innerHTML = listaMesi[oggi.getMonth()];
+    
+    giorni = document.getElementById("days").value;
+    fine = new Date(oggi)
+    fine = fine.setDate(fine.getDate() + parseInt(giorni));
+    fine = new Date(fine)
+    document.getElementById("meseFine").innerHTML = listaMesi[fine.getMonth()]
 }

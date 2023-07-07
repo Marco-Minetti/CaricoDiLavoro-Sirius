@@ -4,6 +4,7 @@ persone = [];
 personeUniche = [];
 listaTab1 = [];
 toSee = [];
+let oggi = new Date()
 class Person {
     constructor(name, group) {
         this.nome = name;
@@ -103,12 +104,6 @@ function creaTabella() {
             { title: "Error", field: "style", formatter: "tickCross" },
         ],
     });
-    //table.selectRow(1);
-    //var selector_table = table.selectRow("data[0].fields.startDate > data[0].fields.dueDate");
-    //selector_table.style.backgroundColor = 'red';
-
-    //selector_table = data.getData().startDate > data.getData().dueDate;
-
 }
 
 async function leggiticket() {
@@ -147,7 +142,6 @@ function CreaPersone() {
         let nome;
         let team;
         for (let j = 0; j < data.length; j++) {
-            console.log(data[j].idReadable);
             if (data[j].fields.assignee === personeUniche[i].nome && data[j].fields.team === personeUniche[i].team) {
                 let sD = new Date(data[j].fields.startDate);
                 sD.setHours(12, 0, 0, 0);
@@ -209,8 +203,8 @@ function calculateTicketDuration(data, startDate, endDate) {
 
     let currentAuthor = null;
     let authorTickets = [];
-    let inizio = new Date();
-    let fine = new Date();
+    let inizio = new Date(oggi)
+    let fine = new Date(oggi);
     fine = fine.setDate(fine.getDate() + parseInt(document.getElementById("days").value));
 
     for (var item of data) {
@@ -297,14 +291,14 @@ function inserisciTab() {
 function inseriscidiv(giorni) {
     document.getElementsByClassName("third_")[0].innerHTML = "";
     let string = "";
-    var dataOdierna = new Date();
 
-    fine = new Date();
+    fine = new Date(oggi);
     fine = fine.setDate(fine.getDate() + parseInt(giorni));
-    strutturaFinale = calculateTicketDuration(listaTab1, new Date(), fine);
+    fine = new Date(fine)
+    strutturaFinale = calculateTicketDuration(listaTab1, new Date(oggi), fine);
 
     for (var ticket of strutturaFinale) {
-        for (let j = new Date(); j < fine; j.setDate(j.getDate() + 1)) {
+        for (j = new Date(oggi); j < fine; j.setDate(j.getDate() + 1)) {
             ISOoggi = j.toISOString().split('T')[0];
             if (checkFestivo(j)) {
                 color = "white";
@@ -342,10 +336,9 @@ function inseriscidiv(giorni) {
 function inseriscigiorni(giorni) {
     document.getElementsByClassName("project")[0].innerHTML = "";
     let string = "";
-    oggi = new Date();
-    fine = new Date();
+    fine = new Date(oggi);
     fine.setDate(oggi.getDate() + parseInt(giorni));
-    for (i = oggi, j = 0; j < giorni; i.setDate(i.getDate() + 1), j++) {
+    for (i = new Date(oggi), j = 0; j < giorni; i.setDate(i.getDate() + 1), j++) {
         string += '<div><div>' + i.getDate() + '</div></div>';
     }
     document.getElementsByClassName("project")[0].innerHTML = string;
@@ -357,4 +350,61 @@ function handleSelection() {
     document.getElementsByClassName("grid")[1].style = "grid-template-columns: repeat(" + giorni + ", 1fr); grid-template-rows: repeat(" + listaTab1.length + ", 1fr);";
     inseriscidiv(giorni);
     inseriscigiorni(giorni);
+}
+async function vaIndietro(){
+    numero = document.getElementById("days").value;
+    oggi = oggi.setDate(oggi.getDate() - parseInt(numero));
+    oggi = new Date(oggi)
+
+    dati;
+    persone = [];
+    personeUniche = [];
+    listaTab1 = [];
+    toSee = [];
+
+    dati = await leggiticket();
+    mostraOrarioPreciso();
+    Calcolini();
+    CreaPersone();
+    inserisciTab();
+    handleSelection();
+    creaTabella();
+
+}
+async function vaAvanti(){
+    numero = document.getElementById("days").value;
+    oggi = oggi.setDate(oggi.getDate() + parseInt(numero));
+    oggi = new Date(oggi);
+    
+    dati;
+    persone = [];
+    personeUniche = [];
+    listaTab1 = [];
+    toSee = [];
+
+    dati = await leggiticket();
+    mostraOrarioPreciso();
+    Calcolini();
+    CreaPersone();
+    inserisciTab();
+    handleSelection();
+    creaTabella();
+    
+}
+async function goBack(){
+    oggi = new Date();
+    
+    dati;
+    persone = [];
+    personeUniche = [];
+    listaTab1 = [];
+    toSee = [];
+
+    dati = await leggiticket();
+    mostraOrarioPreciso();
+    Calcolini();
+    CreaPersone();
+    inserisciTab();
+    handleSelection();
+    creaTabella();
 }

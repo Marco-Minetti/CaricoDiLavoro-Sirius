@@ -20,20 +20,16 @@
 
         </div>
         <div class="first_">
-            <div id="orarioPreciso"></div>
+            <div id="orarioPreciso" onclick="goBack()"></div>
             <div>
                 <form>
+                    <input type="button" value="-" id="bck" onclick="vaIndietro()">
                     <select id="days" onchange="handleSelection()">
                         <option value="7" selected>7 giorni</option>
                         <option value="14">14 giorni</option>
                         <option value="30">30 giorni</option>
                     </select>
-                </form>
-            </div>
-            <div class="direzione">
-                <form>
-                    <input type="button" value="<" id="bck" onclick="vaIndietro()">
-                    <input type="button" value=">" id="fwd" onclick="vaAvanti()">
+                    <input type="button" value="+" id="fwd" onclick="vaAvanti()">
                 </form>
             </div>
         </div>
